@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Jamel Octopress Blog]]></title>
-  <link href="http://silvernight.github.com/atom.xml" rel="self"/>
+  <title><![CDATA[Category: life | Jamel Octopress Blog]]></title>
+  <link href="http://silvernight.github.com/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://silvernight.github.com/"/>
   <updated>2012-11-13T22:29:58+08:00</updated>
   <id>http://silvernight.github.com/</id>
