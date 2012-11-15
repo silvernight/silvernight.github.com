@@ -1,0 +1,31 @@
+---
+layout: post
+title: "idea"
+date: 2012-11-14 08:06
+comments: true
+categories: idea
+---
+
+本篇是用于记录总结我最近的想法的一篇博文。。
+![idea icon](http://www.websbook.com/logo/upimg/litimg/091017/032kh52d.gif)
+
+最近在做的一件事是统一整部电脑里面装的系统的各种文件，包括笔记、重要的文档数据、图片、音乐、软件配置文件等。<!--more-->其中一些像配置文件这样的文件我打算上传到_github_服务器中，其他一些文件有可能的话会保存到网盘中。
+
+在分类存储的过程中，感觉自己对一些东西的分类不够合理。而且自己的电脑的硬盘空间也有限，如果上传大文件到网盘，这个过程又会等很久，如果太久时间没查看网盘，也可能会忘了这件事情。感觉这个问题挺棘手的。
+
+最近比较烦我的一件事是zsh真的挺慢，可能是因为_oh-my-zsh_的原因吧，但换掉却还是蛮可惜的。
+
+另外正在实践的一个想法是使用_octopress_来写博客，不过用这个来写博客可能会遇到比较多的问题。
+目前可预见的问题是:
+
+1. octopress需要ruby语言支撑，对ruby一窍不通
+2. octopress流行度不够，担心早晚会被替代，学了等于白学。
+3. octopress需要使用git，现在对git还不够熟。
+4. octopress需要使用markdown，现在对markdown还不够熟。
+5. octopress是使用jkeyll模板引擎写的，目前还需要画一段时间来学习它的目录结构和配置文件等。
+
+不过如果以上问题都能被克服的话，应该就可以用命令行的方式非常爽的blogging了。原来我曾经用过一段时间的_vimwiki_，不过因为太小众了，而且没有较好的办法把它上传到服务器，所以就没怎么用了。
+
+
+=====
+![city icon](https://www.dropbox.com/s/ts94cfmiglll2sd/Boston%20City%20Flow.jpg)

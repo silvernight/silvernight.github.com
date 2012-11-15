@@ -1,0 +1,60 @@
+---
+layout: post
+title: "Install Notice"
+date: 2012-11-14 09:28
+comments: true
+categories: Install
+---
+
+本文介绍了安装一些unix/linux/mac的命令时需要注意的事项以及安装过程。
+主要参考了这片文章：<http://cloudsben.com/2012/muntain-lion-use-homebrew-install-imagemagick/>
+
+mac os mountain lion下用homebrew按照imagemagick:
+
+1. 安装brew
+2. 安装ghostscript(~~不知xquartz是否要安装~~已确定，在mountainlion上不需要安装)
+```
+$ brew install ghostscript
+```
+安装过程中提示
+```
+**Warning**: Could not link libtiff. Unlinking...
+**Error**: The `brew link` step did not complete successfully
+The formula built, but is not symlinked into /usr/local
+You can try again using `brew link libtiff'
+...
+**Error**: You must `brew link libtiff' before little-cms2 can be installed`
+```
+
+然后在输入`brew link libtiff`时发现系统提示'/usr/local/lib/pkgconfig/'权限不足，该目录not writtable,无法在该目录下创建symbolic link。研究了一下，本来只想设置群组的写权限，然后把本人帐号添加进组里。但是发现mac下居然没有usermod,useradd这些命令，在_偏好设置_中也找不到添加组的选项。无奈下只好添加了others的写权限了。
+
+之后brew link libtiff就成功了。
+
+	Warning: Your Xcode (4.4) is outdated
+	Please install Xcode 4.5.2.
+	==> Installing ghostscript dependency: little-cms2
+	==> Downloading http://sourceforge.net/projects/lcms/files/lcms/2.3/lcms2-2.3.tar.gz
+	######################################################################## 100.0%
+	==> ./configure --prefix=/usr/local/Cellar/little-cms2/2.3
+	==> make install
+	/usr/local/Cellar/little-cms2/2.3: 17 files, 1016K, built in 3.8 minutes
+	==> Installing ghostscript dependency: libpng
+	==> Downloading https://downloads.sf.net/project/machomebrew/Bottles/libpng-1.5.13.mountainlion.bottle.tar.gz
+	######################################################################## 100.0%
+	==> Pouring libpng-1.5.13.mountainlion.bottle.tar.gz
+	/usr/local/Cellar/libpng/1.5.13: 14 files, 1.0M
+	==> Installing ghostscript
+	==> Downloading http://downloads.ghostscript.com/public/ghostscript-9.06.tar.gz
+	######################################################################## 100.0%
+	==> Patching
+	patching file base/unix-dll.mak
+	==> ./configure --prefix=/usr/local/Cellar/ghostscript/9.06 --disable-cups --disable-compile-inits --disable-gtk --with-system-libtiff --without-x
+	==> make install
+	d==> make install-so
+	==> Downloading http://downloads.sourceforge.net/project/gs-fonts/gs-fonts/8.11%20%28base%2035%2C%20GPL%29/ghostscript-fonts-std-8.11.tar.gz
+	######################################################################## 100.0%
+	/usr/local/Cellar/ghostscript/9.06: 709 files, 49M, built in 12.8 minutes
+
+3. 安装imagemagick
+```
+$ brew install imagemagick
