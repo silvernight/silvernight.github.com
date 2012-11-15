@@ -28,7 +28,7 @@ You can try again using `brew link libtiff'
 
 然后在输入`brew link libtiff`时发现系统提示'/usr/local/lib/pkgconfig/'权限不足，该目录not writtable,无法在该目录下创建symbolic link。研究了一下，本来只想设置群组的写权限，然后把本人帐号添加进组里。但是发现mac下居然没有usermod,useradd这些命令，在_偏好设置_中也找不到添加组的选项。无奈下只好添加了others的写权限了。
 
-之后brew link libtiff就成功了。
+之后`brew link libtiff`就成功了。
 
 	Warning: Your Xcode (4.4) is outdated
 	Please install Xcode 4.5.2.
@@ -58,3 +58,9 @@ You can try again using `brew link libtiff'
 3. 安装imagemagick
 ```
 $ brew install imagemagick
+
+{% include_code test.js %}
+
+![anime icon](http://i5.minus.com:81/i01yeD3zCWPoV.jpg)
+
+{% gist 4076902 %}
