@@ -4,7 +4,7 @@
   <title><![CDATA[Jamel Octopress Blog]]></title>
   <link href="http://silvernight.github.com/atom.xml" rel="self"/>
   <link href="http://silvernight.github.com/"/>
-  <updated>2012-11-15T09:27:49+08:00</updated>
+  <updated>2012-11-15T09:48:57+08:00</updated>
   <id>http://silvernight.github.com/</id>
   <author>
     <name><![CDATA[Jamel@Silvernight]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[octopress resources]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/octopress-resources/"/>
+    <updated>2012-11-15T09:30:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/octopress-resources</id>
+    <content type="html"><![CDATA[<h1>octopress资料汇总</h1>
+
+<h2>blog:</h2>
+
+<p>Generating a Table of Contents in Octopress : <a href="http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/">http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/</a></p>
+
+<p>octopress customizatoin : <a href="http://www.linuxabc.net.cn/blog/octopress-customization/">http://www.linuxabc.net.cn/blog/octopress-customization/</a></p>
+
+<p>Changing Octopress&#8217;s Header : <a href="http://blog.bigdinosaur.org/changing-octopresss-header/">http://blog.bigdinosaur.org/changing-octopresss-header/</a></p>
+
+<p>Octopress博客从零开始 : <a href="http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/">http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[synceden]]></title>

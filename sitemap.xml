@@ -2,26 +2,30 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://silvernight.github.com/blog/2012/11/13/my-first-post/</loc>
-        <lastmod>2012-11-14T08:57:25+08:00</lastmod>
+        <lastmod>2012-11-15T09:48:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://silvernight.github.com/blog/2012/11/14/idea/</loc>
-        <lastmod>2012-11-15T00:48:12+08:00</lastmod>
+        <lastmod>2012-11-15T09:48:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://silvernight.github.com/blog/2012/11/14/install-notice/</loc>
-        <lastmod>2012-11-15T09:25:14+08:00</lastmod>
+        <lastmod>2012-11-15T09:48:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://silvernight.github.com/blog/2012/11/15/synceden/</loc>
-        <lastmod>2012-11-15T09:27:41+08:00</lastmod>
+        <lastmod>2012-11-15T09:48:43+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://silvernight.github.com/blog/2012/11/15/octopress-resources/</loc>
+        <lastmod>2012-11-15T09:48:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://silvernight.github.com/blog/archives/</loc>
-        <lastmod>2012-11-15T09:27:41+08:00</lastmod>
+        <lastmod>2012-11-15T09:48:43+08:00</lastmod>
     </url>
     <url>
         <loc>http://silvernight.github.com/</loc>
-        <lastmod>2012-11-15T09:27:41+08:00</lastmod>
+        <lastmod>2012-11-15T09:48:43+08:00</lastmod>
     </url>
 </urlset>
