@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 云同步 | Jamel Octopress Blog]]></title>
+  <link href="http://silvernight.github.com/blog/categories/云同步/atom.xml" rel="self"/>
+  <link href="http://silvernight.github.com/"/>
+  <updated>2012-11-15T09:25:26+08:00</updated>
+  <id>http://silvernight.github.com/</id>
+  <author>
+    <name><![CDATA[Jamel@Silvernight]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[synceden]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/synceden/"/>
+    <updated>2012-11-15T09:08:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/synceden</id>
+    <content type="html"><![CDATA[<p>记录一下最近找到的认为比较好的云同步软件，个人比较偏向于多平台的，因为自己装了几个系统。</p>
+
+<p><strong>dropbox</strong>:</p>
+
+<p><strong>坚果云</strong>:</p>
+
+<p><strong>云诺</strong>:</p>
+
+<p><strong>min.us</strong>:</p>
+
+<pre><code>从iplaysoft.com得知该网站，确实不错，可以支持图片、音乐的外链（我主要考虑了这个）以及一般文件的外链，重要的是还不限流量。使用上来说，和一些一般的网盘比起来，简单许多，但似乎不大方便管理，只有tag的功能，暂时没发现创建多个文件夹管理的功能？？
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
