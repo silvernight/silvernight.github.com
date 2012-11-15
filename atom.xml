@@ -4,7 +4,7 @@
   <title><![CDATA[Jamel Octopress Blog]]></title>
   <link href="http://silvernight.github.com/atom.xml" rel="self"/>
   <link href="http://silvernight.github.com/"/>
-  <updated>2012-11-15T09:48:57+08:00</updated>
+  <updated>2012-11-15T15:24:11+08:00</updated>
   <id>http://silvernight.github.com/</id>
   <author>
     <name><![CDATA[Jamel@Silvernight]]></name>
@@ -12,6 +12,179 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[octopress test]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/octopress-test/"/>
+    <updated>2012-11-15T15:02:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/octopress-test</id>
+    <content type="html"><![CDATA[<h1>Just For test</h1>
+
+<h3>include code:</h3>
+
+<figure class='code'><figcaption><span> (test.js)</span> <a href='http://silvernight.github.com/downloads/code/test.js'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * sample javascript from xui</span>
+</span><span class='line'><span class="cm"> * */</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="kc">undefined</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">xui</span><span class="p">,</span>
+</span><span class='line'>  <span class="nb">window</span>     <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">string</span>     <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">),</span>
+</span><span class='line'>  <span class="nb">document</span>   <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">simpleExpr</span> <span class="o">=</span> <span class="sr">/^#?([\w-]+)$/</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">idExpr</span>     <span class="o">=</span> <span class="sr">/^#/</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">tagExpr</span>    <span class="o">=</span> <span class="sr">/&lt;([\w:]+)/</span><span class="p">,</span>
+</span><span class='line'>  <span class="nx">slice</span>      <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>  <span class="p">};</span>
+</span><span class='line'><span class="k">try</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>  <span class="p">}</span>
+</span><span class='line'><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="nx">slice</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">ret</span><span class="o">=</span><span class="p">[];</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'>  <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>   <span class="p">};</span>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">x$</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">xui</span> <span class="o">=</span> <span class="nx">xui</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="k">new</span> <span class="nx">xui</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>include picture</h3>
+
+<p><img src="http://i5.minus.com:81/i01yeD3zCWPoV.jpg" alt="anime icon" /></p>
+
+<h3>include gist(gist 4076902)</h3>
+
+<div><script src='https://gist.github.com/4076902.js?file='></script>
+<noscript><pre><code>#include &lt;stdio.h&gt;
+
+int main
+{
+  printf(&quot;hello world&quot;);
+}</code></pre></noscript></div>
+
+
+<h3>code block</h3>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>#</h2>
+
+<h3>jsfiddle</h3>
+
+<iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/Q2v3n/embedded/js,resources,html,css,result/light/"></iframe>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learning octopress]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/learning-octopress/"/>
+    <updated>2012-11-15T14:11:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/learning-octopress</id>
+    <content type="html"><![CDATA[<h1>Learning Octopress</h1>
+
+<h2>Sharing Code Snippets</h2>
+
+<p>octopress的分享代码的功能非常强大。它提供了多种分享代码的功能。
+如下：</p>
+
+<ul>
+<li> A Sass port of Solarized syntax highlighting created specifically for Octopress.</li>
+<li> Gist code embedding - by Brandon Tilly.</li>
+<li> Insert code snippets from your filesystem with a download link.</li>
+<li> Easy inline code blocks with &lt;figure&gt; and &lt;figcaption&gt; and optional download links.</li>
+<li> Pygments caching - a Jekyll community plugin.</li>
+<li> Table based line numbers added with javascript.</li>
+</ul>
+
+
+<h3>Solarized highlighting</h3>
+
+<p>Solarized has a beautiful syntax highlighting color scheme, but reproducing it requires a highly sophisticated highlighting engine. Pygments (the highlighter Jekyll uses) processes code snippets into styleable HTML, but it isn’t nearly as powerful as the highlighting engine in Vim for example.</p>
+
+<h3>Backtick Code blocks</h3>
+
+<h4>syntax</h4>
+
+<pre><code>``` [language] [title] [url] [link text]
+code snippet
+```
+</code></pre>
+
+<h3>Gist embedding</h3>
+
+<p>刚刚研究了一下gist，发现gist原来是github提供的一种代码分享的功能，可以在githbu上创建gist代码，然后通过gist id来引用代码，Gist代码会存放在git的仓库，因此可以用git clone来克隆gist代码非常方便。
+在octopress中可以这样引用gist代码</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% gist gist_id [filename] %}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Include Code Snippets</h3>
+
+<h4>syntax</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% include_code [title] [lang:language] path/to/file %}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Inline Code blocks</h3>
+
+<p>(the following code&#8217;s braces have been escaped  to avoid octopress&#8217;s parsing)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>\{% codeblock [title] [lang:objc] [url] [link text] %\}
+</span><span class='line'>[rectangle setX: 10 y: 10 width: 20 height: 20];
+</span><span class='line'>\{% endcodeblock %\}</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learning github]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/learning-github/"/>
+    <updated>2012-11-15T14:08:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/learning-github</id>
+    <content type="html"><![CDATA[<h1>Github 学习</h1>
+
+<h4>Github Gist：有版本控制的粘帖代码服务</h4>
+
+<p>Gist是一个粘帖工具，与Pastie类似。通过粘帖工具可以方便地共享文本或者代码——用户把一段文本粘帖到网站上就会得到一个URL，通过这个URL就可以访问先前粘帖的文本。</p>
+
+<p>Gist与Pastie的原理是一样的，只不过它还有一样绝招：粘帖的文本会被放进一个git仓库，仓库可以通过一个git 克隆URL访问，还可以用git客户端程序检出。不仅如此，联系还是双向的：将提交送回到仓库，新作的修改（以及新增的文件）就可以在Gist的Web界 面上访问到，在Web界面上同样可以编辑文本文件。使用Gist，用户可以从粘帖一小段文本或者代码开始，然后通过Web界面或者git工具展开网上的协 作。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[octopress resources]]></title>
@@ -22,13 +195,17 @@
 
 <h2>blog:</h2>
 
-<p>Generating a Table of Contents in Octopress : <a href="http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/">http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/</a></p>
+<h5>Generating a Table of Contents in Octopress : <a href="http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/">http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/</a></h5>
 
-<p>octopress customizatoin : <a href="http://www.linuxabc.net.cn/blog/octopress-customization/">http://www.linuxabc.net.cn/blog/octopress-customization/</a></p>
+<h5>octopress customizatoin : <a href="http://www.linuxabc.net.cn/blog/octopress-customization/">http://www.linuxabc.net.cn/blog/octopress-customization/</a></h5>
 
-<p>Changing Octopress&#8217;s Header : <a href="http://blog.bigdinosaur.org/changing-octopresss-header/">http://blog.bigdinosaur.org/changing-octopresss-header/</a></p>
+<h5>Changing Octopress&#8217;s Header : <a href="http://blog.bigdinosaur.org/changing-octopresss-header/">http://blog.bigdinosaur.org/changing-octopresss-header/</a></h5>
 
-<p>Octopress博客从零开始 : <a href="http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/">http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/</a></p>
+<h5>Octopress博客从零开始 : <a href="http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/">http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/</a></h5>
+
+<h5>octopress 主题:</h5>
+
+<h6>slash : <a href="http://zespia.tw/blog/2012/01/25/slash-theme/">http://zespia.tw/blog/2012/01/25/slash-theme/</a></h6>
 ]]></content>
   </entry>
   
@@ -47,8 +224,7 @@
 
 <p><strong>min.us</strong>:</p>
 
-<pre><code>从iplaysoft.com得知该网站，确实不错，可以支持图片、音乐的外链（我主要考虑了这个）以及一般文件的外链，重要的是还不限流量。使用上来说，和一些一般的网盘比起来，简单许多，但似乎不大方便管理，只有tag的功能，暂时没发现创建多个文件夹管理的功能？？
-</code></pre>
+<p>  从iplaysoft.com得知该网站，确实不错，可以支持图片、音乐的外链（我主要考虑了这个）以及一般文件的外链，重要的是还不限流量。使用上来说，和一些一般的网盘比起来，简单许多，但似乎不大方便管理，只有tag的功能，暂时没发现创建多个文件夹管理的功能？？</p>
 ]]></content>
   </entry>
   
@@ -90,7 +266,7 @@
 
 <p>然后在输入<code>brew link libtiff</code>时发现系统提示&#8217;/usr/local/lib/pkgconfig/&#8217;权限不足，该目录not writtable,无法在该目录下创建symbolic link。研究了一下，本来只想设置群组的写权限，然后把本人帐号添加进组里。但是发现mac下居然没有usermod,useradd这些命令，在<em>偏好设置</em>中也找不到添加组的选项。无奈下只好添加了others的写权限了。</p>
 
-<p>之后brew link libtiff就成功了。</p>
+<p>之后<code>brew link libtiff</code>就成功了。</p>
 
 <pre><code>Warning: Your Xcode (4.4) is outdated
 Please install Xcode 4.5.2.

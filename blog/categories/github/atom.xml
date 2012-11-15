@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: github | Jamel Octopress Blog]]></title>
+  <link href="http://silvernight.github.com/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://silvernight.github.com/"/>
+  <updated>2012-11-15T15:24:11+08:00</updated>
+  <id>http://silvernight.github.com/</id>
+  <author>
+    <name><![CDATA[Jamel@Silvernight]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Learning github]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/learning-github/"/>
+    <updated>2012-11-15T14:08:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/learning-github</id>
+    <content type="html"><![CDATA[<h1>Github 学习</h1>
+
+<h4>Github Gist：有版本控制的粘帖代码服务</h4>
+
+<p>Gist是一个粘帖工具，与Pastie类似。通过粘帖工具可以方便地共享文本或者代码——用户把一段文本粘帖到网站上就会得到一个URL，通过这个URL就可以访问先前粘帖的文本。</p>
+
+<p>Gist与Pastie的原理是一样的，只不过它还有一样绝招：粘帖的文本会被放进一个git仓库，仓库可以通过一个git 克隆URL访问，还可以用git客户端程序检出。不仅如此，联系还是双向的：将提交送回到仓库，新作的修改（以及新增的文件）就可以在Gist的Web界 面上访问到，在Web界面上同样可以编辑文本文件。使用Gist，用户可以从粘帖一小段文本或者代码开始，然后通过Web界面或者git工具展开网上的协 作。</p>
+]]></content>
+  </entry>
+  
+</feed>

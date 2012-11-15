@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Jamel Octopress Blog]]></title>
   <link href="http://silvernight.github.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://silvernight.github.com/"/>
-  <updated>2012-11-15T09:48:57+08:00</updated>
+  <updated>2012-11-15T15:24:11+08:00</updated>
   <id>http://silvernight.github.com/</id>
   <author>
     <name><![CDATA[Jamel@Silvernight]]></name>
@@ -12,6 +12,115 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[octopress test]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/octopress-test/"/>
+    <updated>2012-11-15T15:02:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/octopress-test</id>
+    <content type="html"><![CDATA[<h1>Just For test</h1>
+
+<h3>include code:</h3>
+
+<p>{% include_code test.js %}</p>
+
+<h3>include picture</h3>
+
+<p><img src="http://i5.minus.com:81/i01yeD3zCWPoV.jpg" alt="anime icon" /></p>
+
+<h3>include gist(gist 4076902)</h3>
+
+<p>{% gist 4076902 %}</p>
+
+<h3>code block</h3>
+
+<p>{% codeblock lang:c %}
+int main()
+{</p>
+
+<pre><code>printf("Hello World!");
+</code></pre>
+
+<p>}
+{% endcodeblock %}</p>
+
+<h2>#</h2>
+
+<h3>jsfiddle</h3>
+
+<p>{% jsfiddle Q2v3n %}</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Learning octopress]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/15/learning-octopress/"/>
+    <updated>2012-11-15T14:11:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/15/learning-octopress</id>
+    <content type="html"><![CDATA[<h1>Learning Octopress</h1>
+
+<h2>Sharing Code Snippets</h2>
+
+<p>octopress的分享代码的功能非常强大。它提供了多种分享代码的功能。
+如下：</p>
+
+<ul>
+<li> A Sass port of Solarized syntax highlighting created specifically for Octopress.</li>
+<li> Gist code embedding - by Brandon Tilly.</li>
+<li> Insert code snippets from your filesystem with a download link.</li>
+<li> Easy inline code blocks with &lt;figure&gt; and &lt;figcaption&gt; and optional download links.</li>
+<li> Pygments caching - a Jekyll community plugin.</li>
+<li> Table based line numbers added with javascript.</li>
+</ul>
+
+
+<h3>Solarized highlighting</h3>
+
+<p>Solarized has a beautiful syntax highlighting color scheme, but reproducing it requires a highly sophisticated highlighting engine. Pygments (the highlighter Jekyll uses) processes code snippets into styleable HTML, but it isn’t nearly as powerful as the highlighting engine in Vim for example.</p>
+
+<h3>Backtick Code blocks</h3>
+
+<h4>syntax</h4>
+
+<pre><code>``` [language] [title] [url] [link text]
+code snippet
+```
+</code></pre>
+
+<h3>Gist embedding</h3>
+
+<p>刚刚研究了一下gist，发现gist原来是github提供的一种代码分享的功能，可以在githbu上创建gist代码，然后通过gist id来引用代码，Gist代码会存放在git的仓库，因此可以用git clone来克隆gist代码非常方便。
+在octopress中可以这样引用gist代码</p>
+
+<p>```</p>
+
+<pre><code>{% gist gist_id [filename] %}
+</code></pre>
+
+<p>```</p>
+
+<h3>Include Code Snippets</h3>
+
+<h4>syntax</h4>
+
+<p>```</p>
+
+<pre><code>{% include_code [title] [lang:language] path/to/file %}
+</code></pre>
+
+<p>```</p>
+
+<h3>Inline Code blocks</h3>
+
+<p>(the following code's braces have been escaped  to avoid octopress's parsing)</p>
+
+<p><code>
+\{% codeblock [title] [lang:objc] [url] [link text] %\}
+[rectangle setX: 10 y: 10 width: 20 height: 20];
+\{% endcodeblock %\}
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[octopress resources]]></title>
@@ -22,13 +131,17 @@
 
 <h2>blog:</h2>
 
-<p>Generating a Table of Contents in Octopress : <a href="http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/">http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/</a></p>
+<h5>Generating a Table of Contents in Octopress : <a href="http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/">http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/</a></h5>
 
-<p>octopress customizatoin : <a href="http://www.linuxabc.net.cn/blog/octopress-customization/">http://www.linuxabc.net.cn/blog/octopress-customization/</a></p>
+<h5>octopress customizatoin : <a href="http://www.linuxabc.net.cn/blog/octopress-customization/">http://www.linuxabc.net.cn/blog/octopress-customization/</a></h5>
 
-<p>Changing Octopress's Header : <a href="http://blog.bigdinosaur.org/changing-octopresss-header/">http://blog.bigdinosaur.org/changing-octopresss-header/</a></p>
+<h5>Changing Octopress's Header : <a href="http://blog.bigdinosaur.org/changing-octopresss-header/">http://blog.bigdinosaur.org/changing-octopresss-header/</a></h5>
 
-<p>Octopress博客从零开始 : <a href="http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/">http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/</a></p>
+<h5>Octopress博客从零开始 : <a href="http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/">http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/</a></h5>
+
+<h5>octopress 主题:</h5>
+
+<h6>slash : <a href="http://zespia.tw/blog/2012/01/25/slash-theme/">http://zespia.tw/blog/2012/01/25/slash-theme/</a></h6>
 ]]></content>
   </entry>
   

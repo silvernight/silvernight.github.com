@@ -3,11 +3,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>octopress resources - Jamel Octopress Blog</title>
+	<title>Learning octopress - Jamel Octopress Blog</title>
 	<meta name="author" content="Jamel@Silvernight">
 
 	
-	<meta name="description" content="octopress资料汇总 blog: Generating a Table of Contents in Octopress : http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in- &hellip;">
+	<meta name="description" content="Learning Octopress Sharing Code Snippets octopress的分享代码的功能非常强大。它提供了多种分享代码的功能。
+如下： A Sass port of Solarized syntax highlighting created specifically &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -70,22 +71,65 @@
 		
 	
 	<div id="content" class="inner"><article class="post">
-	<h1 class="title">Octopress Resources</h1>
-	<div class="entry-content"><h1>octopress资料汇总</h1>
+	<h1 class="title">Learning Octopress</h1>
+	<div class="entry-content"><h1>Learning Octopress</h1>
 
-<h2>blog:</h2>
+<h2>Sharing Code Snippets</h2>
 
-<h5>Generating a Table of Contents in Octopress : <a href="http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/">http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/</a></h5>
+<p>octopress的分享代码的功能非常强大。它提供了多种分享代码的功能。
+如下：</p>
 
-<h5>octopress customizatoin : <a href="http://www.linuxabc.net.cn/blog/octopress-customization/">http://www.linuxabc.net.cn/blog/octopress-customization/</a></h5>
+<ul>
+<li> A Sass port of Solarized syntax highlighting created specifically for Octopress.</li>
+<li> Gist code embedding - by Brandon Tilly.</li>
+<li> Insert code snippets from your filesystem with a download link.</li>
+<li> Easy inline code blocks with &lt;figure&gt; and &lt;figcaption&gt; and optional download links.</li>
+<li> Pygments caching - a Jekyll community plugin.</li>
+<li> Table based line numbers added with javascript.</li>
+</ul>
 
-<h5>Changing Octopress&#8217;s Header : <a href="http://blog.bigdinosaur.org/changing-octopresss-header/">http://blog.bigdinosaur.org/changing-octopresss-header/</a></h5>
 
-<h5>Octopress博客从零开始 : <a href="http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/">http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/</a></h5>
+<h3>Solarized highlighting</h3>
 
-<h5>octopress 主题:</h5>
+<p>Solarized has a beautiful syntax highlighting color scheme, but reproducing it requires a highly sophisticated highlighting engine. Pygments (the highlighter Jekyll uses) processes code snippets into styleable HTML, but it isn’t nearly as powerful as the highlighting engine in Vim for example.</p>
 
-<h6>slash : <a href="http://zespia.tw/blog/2012/01/25/slash-theme/">http://zespia.tw/blog/2012/01/25/slash-theme/</a></h6>
+<h3>Backtick Code blocks</h3>
+
+<h4>syntax</h4>
+
+<pre><code>``` [language] [title] [url] [link text]
+code snippet
+```
+</code></pre>
+
+<h3>Gist embedding</h3>
+
+<p>刚刚研究了一下gist，发现gist原来是github提供的一种代码分享的功能，可以在githbu上创建gist代码，然后通过gist id来引用代码，Gist代码会存放在git的仓库，因此可以用git clone来克隆gist代码非常方便。
+在octopress中可以这样引用gist代码</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% gist gist_id [filename] %}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Include Code Snippets</h3>
+
+<h4>syntax</h4>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{% include_code [title] [lang:language] path/to/file %}</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Inline Code blocks</h3>
+
+<p>(the following code&#8217;s braces have been escaped  to avoid octopress&#8217;s parsing)</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>\{% codeblock [title] [lang:objc] [url] [link text] %\}
+</span><span class='line'>[rectangle setX: 10 y: 10 width: 20 height: 20];
+</span><span class='line'>\{% endcodeblock %\}</span></code></pre></td></tr></table></div></figure>
+
 </div>
 
 
@@ -102,7 +146,7 @@
   
 
 
-<time datetime="2012-11-15T09:30:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time></div>
+<time datetime="2012-11-15T14:11:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
@@ -152,8 +196,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://silvernight.github.com/blog/2012/11/15/octopress-resources/';
-        var disqus_url = 'http://silvernight.github.com/blog/2012/11/15/octopress-resources/';
+        var disqus_identifier = 'http://silvernight.github.com/blog/2012/11/15/learning-octopress/';
+        var disqus_url = 'http://silvernight.github.com/blog/2012/11/15/learning-octopress/';
         var disqus_script = 'embed.js';
       
     (function () {
