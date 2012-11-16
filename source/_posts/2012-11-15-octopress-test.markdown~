@@ -12,6 +12,7 @@ categories: octopress
 
 {% include_code test.js %}
 
+<!--more-->
 ###include picture
 
 ![anime icon](http://i5.minus.com:81/i01yeD3zCWPoV.jpg)
@@ -31,3 +32,4 @@ int main()
 ###
 
 ###jsfiddle
+{% jsfiddle Q2v3n %}

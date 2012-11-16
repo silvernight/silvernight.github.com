@@ -13,6 +13,7 @@ mac os mountain lion下用homebrew按照imagemagick:
 
 1. 安装brew
 2. 安装ghostscript(~~不知xquartz是否要安装~~已确定，在mountainlion上不需要安装)
+<!--more-->
 ```
 $ brew install ghostscript
 ```

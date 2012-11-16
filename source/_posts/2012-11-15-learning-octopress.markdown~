@@ -21,11 +21,12 @@ octopress的分享代码的功能非常强大。它提供了多种分享代码�
    * Pygments caching - a Jekyll community plugin.
    * Table based line numbers added with javascript.
 
-
+<!--more-->
 ###Solarized highlighting
 
 Solarized has a beautiful syntax highlighting color scheme, but reproducing it requires a highly sophisticated highlighting engine. Pygments (the highlighter Jekyll uses) processes code snippets into styleable HTML, but it isn’t nearly as powerful as the highlighting engine in Vim for example.
 
+######注意：为了避免被octopress解析，下面代码中的{和}与%的中间都加了个空格。
 ###Backtick Code blocks
 ####syntax
 	``` [language] [title] [url] [link text]
@@ -38,21 +39,20 @@ Solarized has a beautiful syntax highlighting color scheme, but reproducing it r
 在octopress中可以这样引用gist代码
 
 ```
-	{% gist gist_id [filename] %}
+	{ % gist gist_id [filename] % }
 ```
 
 ###Include Code Snippets
 
 ####syntax
 ```
-	{% include_code [title] [lang:language] path/to/file %}
+	{ % include_code [title] [lang:language] path/to/file % }
 ```
 
 ###Inline Code blocks
-(the following code's braces have been escaped  to avoid octopress's parsing)
 
 ```
-\{% codeblock [title] [lang:objc] [url] [link text] %}
+{ % codeblock [title] [lang:objc] [url] [link text] % }
 [rectangle setX: 10 y: 10 width: 20 height: 20];
-\{% endcodeblock %}
+{ % endcodeblock % }
 ```

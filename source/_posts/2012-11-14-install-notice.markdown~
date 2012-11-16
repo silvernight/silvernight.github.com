@@ -58,9 +58,3 @@ You can try again using `brew link libtiff'
 3. 安装imagemagick
 ```
 $ brew install imagemagick
-
-{% include_code test.js %}
-
-![anime icon](http://i5.minus.com:81/i01yeD3zCWPoV.jpg)
-
-{% gist 4076902 %}

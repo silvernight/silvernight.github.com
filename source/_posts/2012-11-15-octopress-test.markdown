@@ -14,8 +14,9 @@ categories: octopress
 
 ###include picture
 
-![anime icon](http://i5.minus.com:81/i01yeD3zCWPoV.jpg)
+![test picture](http://i5.minus.com:81/i01yeD3zCWPoV.jpg)
 
+<!--more-->
 ###include gist(gist 4076902)
 
 {% gist 4076902 %}
