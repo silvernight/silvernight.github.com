@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | Jamel Octopress Blog]]></title>
   <link href="http://silvernight.github.com/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://silvernight.github.com/"/>
-  <updated>2012-11-15T15:24:11+08:00</updated>
+  <updated>2012-11-16T13:54:51+08:00</updated>
   <id>http://silvernight.github.com/</id>
   <author>
     <name><![CDATA[Jamel@Silvernight]]></name>
@@ -22,33 +22,92 @@
 
 <h3>include code:</h3>
 
-<p>{% include_code test.js %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span> (test.js)</span> <a href='/downloads/code/test.js'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="cm">/**</span>
+</span><span class='line'><span class="cm"> * sample javascript from xui</span>
+</span><span class='line'><span class="cm"> * */</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">var</span> <span class="kc">undefined</span><span class="p">,</span>
+</span><span class='line'>	<span class="nx">xui</span><span class="p">,</span>
+</span><span class='line'>	<span class="nb">window</span>     <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
+</span><span class='line'>	<span class="nx">string</span>     <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">),</span>
+</span><span class='line'>	<span class="nb">document</span>   <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span>
+</span><span class='line'>	<span class="nx">simpleExpr</span> <span class="o">=</span> <span class="sr">/^#?([\w-]+)$/</span><span class="p">,</span>
+</span><span class='line'>	<span class="nx">idExpr</span>     <span class="o">=</span> <span class="sr">/^#/</span><span class="p">,</span>
+</span><span class='line'>	<span class="nx">tagExpr</span>    <span class="o">=</span> <span class="sr">/&lt;([\w:]+)/</span><span class="p">,</span>
+</span><span class='line'>	<span class="nx">slice</span>      <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>  <span class="p">};</span>
+</span><span class='line'><span class="k">try</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>  <span class="p">}</span>
+</span><span class='line'><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="nx">slice</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">ret</span><span class="o">=</span><span class="p">[];</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+</span><span class='line'>	<span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span> 	<span class="p">};</span>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>	<span class="nb">window</span><span class="p">.</span><span class="nx">x$</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">xui</span> <span class="o">=</span> <span class="nx">xui</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>		<span class="k">return</span> <span class="k">new</span> <span class="nx">xui</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>	<span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h3>include picture</h3>
 
-<p><img src="http://i5.minus.com:81/i01yeD3zCWPoV.jpg" alt="anime icon" /></p>
+<p><img src="http://i5.minus.com:81/i01yeD3zCWPoV.jpg" alt="test picture" /></p>
+
+<!--more-->
+
 
 <h3>include gist(gist 4076902)</h3>
 
-<p>{% gist 4076902 %}</p>
+<p><div><script src='https://gist.github.com/4076902.js?file='></script>
+<noscript><pre><code>#include &lt;stdio.h&gt;
+
+int main
+{
+  printf(&quot;hello world&quot;);
+}</code></pre></noscript></div>
+</p>
 
 <h3>code block</h3>
 
-<p>{% codeblock lang:c %}
-int main()
-{</p>
-
-<pre><code>printf("Hello World!");
-</code></pre>
-
-<p>}
-{% endcodeblock %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World!&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
 
 <h2>#</h2>
 
 <h3>jsfiddle</h3>
 
-<p>{% jsfiddle Q2v3n %}</p>
+<p><iframe style="width: 100%; height: 300px" src="http://jsfiddle.net/Q2v3n/embedded/js,resources,html,css,result/light/"></iframe></p>
 ]]></content>
   </entry>
   
@@ -74,9 +133,14 @@ int main()
 </ul>
 
 
+<!--more-->
+
+
 <h3>Solarized highlighting</h3>
 
 <p>Solarized has a beautiful syntax highlighting color scheme, but reproducing it requires a highly sophisticated highlighting engine. Pygments (the highlighter Jekyll uses) processes code snippets into styleable HTML, but it isn’t nearly as powerful as the highlighting engine in Vim for example.</p>
+
+<h6>注意：为了避免被octopress解析，下面代码中的{和}与%的中间都加了个空格。</h6>
 
 <h3>Backtick Code blocks</h3>
 
@@ -94,7 +158,7 @@ code snippet
 
 <p>```</p>
 
-<pre><code>{% gist gist_id [filename] %}
+<pre><code>{ % gist gist_id [filename] % }
 </code></pre>
 
 <p>```</p>
@@ -105,19 +169,17 @@ code snippet
 
 <p>```</p>
 
-<pre><code>{% include_code [title] [lang:language] path/to/file %}
+<pre><code>{ % include_code [title] [lang:language] path/to/file % }
 </code></pre>
 
 <p>```</p>
 
 <h3>Inline Code blocks</h3>
 
-<p>(the following code's braces have been escaped  to avoid octopress's parsing)</p>
-
 <p><code>
-\{% codeblock [title] [lang:objc] [url] [link text] %\}
+{ % codeblock [title] [lang:objc] [url] [link text] % }
 [rectangle setX: 10 y: 10 width: 20 height: 20];
-\{% endcodeblock %\}
+{ % endcodeblock % }
 </code></p>
 ]]></content>
   </entry>

@@ -89,9 +89,14 @@
 </ul>
 
 
+<!--more-->
+
+
 <h3>Solarized highlighting</h3>
 
 <p>Solarized has a beautiful syntax highlighting color scheme, but reproducing it requires a highly sophisticated highlighting engine. Pygments (the highlighter Jekyll uses) processes code snippets into styleable HTML, but it isn’t nearly as powerful as the highlighting engine in Vim for example.</p>
+
+<h6>注意：为了避免被octopress解析，下面代码中的{和}与%的中间都加了个空格。</h6>
 
 <h3>Backtick Code blocks</h3>
 
@@ -108,7 +113,7 @@ code snippet
 在octopress中可以这样引用gist代码</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{% gist gist_id [filename] %}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{ % gist gist_id [filename] % }</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Include Code Snippets</h3>
@@ -116,19 +121,17 @@ code snippet
 <h4>syntax</h4>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>{% include_code [title] [lang:language] path/to/file %}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>{ % include_code [title] [lang:language] path/to/file % }</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Inline Code blocks</h3>
 
-<p>(the following code&#8217;s braces have been escaped  to avoid octopress&#8217;s parsing)</p>
-
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>\{% codeblock [title] [lang:objc] [url] [link text] %\}
+</pre></td><td class='code'><pre><code class=''><span class='line'>{ % codeblock [title] [lang:objc] [url] [link text] % }
 </span><span class='line'>[rectangle setX: 10 y: 10 width: 20 height: 20];
-</span><span class='line'>\{% endcodeblock %\}</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>{ % endcodeblock % }</span></code></pre></td></tr></table></div></figure>
 
 </div>
 

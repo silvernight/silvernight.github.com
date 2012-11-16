@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Install | Jamel Octopress Blog]]></title>
   <link href="http://silvernight.github.com/blog/categories/install/atom.xml" rel="self"/>
   <link href="http://silvernight.github.com/"/>
-  <updated>2012-11-15T15:24:11+08:00</updated>
+  <updated>2012-11-16T13:54:51+08:00</updated>
   <id>http://silvernight.github.com/</id>
   <author>
     <name><![CDATA[Jamel@Silvernight]]></name>
@@ -25,8 +25,14 @@
 
 <ol>
 <li>安装brew</li>
-<li>安装ghostscript(<del>不知xquartz是否要安装</del>已确定，在mountainlion上不需要安装)
-<code>
+<li>安装ghostscript(<del>不知xquartz是否要安装</del>已确定，在mountainlion上不需要安装)</li>
+</ol>
+
+
+<!--more-->
+
+
+<p><code>
 $ brew install ghostscript
 </code>
 安装过程中提示
@@ -37,9 +43,7 @@ The formula built, but is not symlinked into /usr/local
 You can try again using `brew link libtiff'
 ...
 **Error**: You must `brew link libtiff' before little-cms2 can be installed`
-</code></li>
-</ol>
-
+</code></p>
 
 <p>然后在输入<code>brew link libtiff</code>时发现系统提示'/usr/local/lib/pkgconfig/'权限不足，该目录not writtable,无法在该目录下创建symbolic link。研究了一下，本来只想设置群组的写权限，然后把本人帐号添加进组里。但是发现mac下居然没有usermod,useradd这些命令，在<em>偏好设置</em>中也找不到添加组的选项。无奈下只好添加了others的写权限了。</p>
 
