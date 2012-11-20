@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: notes | Jamel Octopress Blog]]></title>
+  <link href="http://silvernight.github.com/blog/categories/notes/atom.xml" rel="self"/>
+  <link href="http://silvernight.github.com/"/>
+  <updated>2012-11-20T09:35:50+08:00</updated>
+  <id>http://silvernight.github.com/</id>
+  <author>
+    <name><![CDATA[Jamel@Silvernight]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The C++ STANDARD LIBRARY CHAPTER 3]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-3/"/>
+    <updated>2012-11-20T09:20:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-3</id>
+    <content type="html"><![CDATA[<h1>C++标准库-读书笔记-第三章--一般概念</h1>
+
+<h3>3.3错误处理和异常处理</h3>
+
+<p>标准异常类别可分为三组：</p>
+
+<pre><code>1. 语言本身支持的异常
+2. C++标准库发出的异常
+3. 程序作用域之外发出的异常
+</code></pre>
+
+<p><img src="images/fancybox/fancybox_loading.gif" alt="test picture" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[The C++ STANDARD LIBRARY CHAPTER 2]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-2/"/>
+    <updated>2012-11-20T08:13:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-2</id>
+    <content type="html"><![CDATA[<h1>C++标准库-读书笔记-第二章</h1>
+
+<h4>2.1</h4>
+
+<p>1、标准程序库并非基于某本书或某一个现成的函数库，而是将各种不同的类（classes）整合而成。你会发现不同组件背后有不同的设计原则，string class 和 STL之间的差别就是很好的例子，
+后者是一个数据结构和算法框架。</p>
+
+<ul>
+<li>string classes 被设计为安全易用的组件，其界面几乎不言自明，并能对许多可能的错误作检验。</li>
+<li>STL的设计目标，是将不同的算法和数据结构结合在一起，并获取最佳效率，所以STL并不非常便利，也不检验许多可能的逻辑错误。要运用STL强大的框架和优异的效率，你就必须通晓其概念并小心运用。</li>
+</ul>
+
+
+<h4>2.2.1 template</h4>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">max</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">return</span> <span class="n">a</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">b</span> <span class="o">?</span> <span class="n">b</span> <span class="o">:</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h6>Nontype Templates（非类型模板参数）</h6>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span> <span class="n">flags32</span><span class="p">;</span>
+</span><span class='line'><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">50</span><span class="o">&gt;</span> <span class="n">flags50</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+这些bitsets由于使用不同的template参数，所以有不同的类型。</p>
+
+<h6>Default Template Parameters</h6>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="k">class</span> <span class="nc">container</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span><span class="p">;</span>
+</span><span class='line'><span class="n">MyClass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">x1</span><span class="p">;</span>        <span class="c1">// equivalent to: MyClass&amp;lt;int, vector&lt;int&gt; &gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h5>typename - 被用来作为类型之前的标识符。</h5>
+
+<h5>成员模板</h5>
+
+<p>类成员模板可以是个template，但它既不能是virtual，也不能有预设参数。
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">private</span><span class="o">:</span>
+</span><span class='line'>    <span class="n">T</span> <span class="n">value</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">public</span><span class="o">:</span>
+</span><span class='line'>    <span class="k">template</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="k">class</span> <span class="nc">X</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>        <span class="kt">void</span> <span class="n">assign</span><span class="p">(</span><span class="k">const</span> <span class="n">MyClass</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">X</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">x</span><span class="p">)</span>    <span class="cm">/* allows different template types */</span>
+</span><span class='line'>        <span class="p">{</span>
+</span><span class='line'>            <span class="n">value</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">getValue</span><span class="p">();</span>           <span class="cm">/* different types can&#39;t access private or protected members */</span>
+</span><span class='line'>        <span class="p">}</span>
+</span><span class='line'>    <span class="n">T</span> <span class="n">getValue</span> <span class="p">()</span> <span class="k">const</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="p">...</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">};</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">void</span> <span class="n">f</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">MyClass</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">double</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">d</span><span class="p">;</span>
+</span><span class='line'><span class="n">MyClass</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">d</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+</span><span class='line'><span class="n">d</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>    <span class="c1">// OK, (int is assignable to double)</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>template copy constructor</strong>
+copy constructor with implicit type conversion does not hide implicit copy constructor
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">public</span><span class="o">:</span>
+</span><span class='line'>    <span class="c1">// copy constructor with implicit type conversion</span>
+</span><span class='line'>    <span class="c1">// does not hide implicit copy constructor</span>
+</span><span class='line'>    <span class="k">template</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="k">class</span> <span class="nc">U</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">MyClass</span> <span class="p">(</span><span class="k">const</span> <span class="n">MyClass</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">U</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="n">x</span><span class="p">);</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">};</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">void</span> <span class="n">f</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">MyClass</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">double</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">xd</span><span class="p">;</span>
+</span><span class='line'><span class="n">MyClass</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">double</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">xd2</span><span class="p">(</span><span class="n">xd</span><span class="p">);</span>    <span class="c1">// calls built-in copy constructor</span>
+</span><span class='line'><span class="n">MyCLass</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="kt">int</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>    <span class="n">xi</span><span class="p">(</span><span class="n">xd</span><span class="p">);</span>     <span class="c1">// calls template copy constructor</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>Nested Template Classes</strong>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">template</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="k">class</span> <span class="nc">T2</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">class</span> <span class="nc">NestedClass</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h4>namespace</h4>
+
+<p>如果某个函数的一个或多个引用类型，都定义在函数所在的namespace中，那么你不必为该函数指定namespace。这个规则称为Koening lookup。
+例如：
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// define identifiers in namespace josuttis</span>
+</span><span class='line'><span class="k">namespace</span> <span class="n">josuttis</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">class</span> <span class="nc">File</span><span class="p">;</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">myGlobalFunc</span><span class="p">(</span><span class="k">const</span> <span class="n">File</span><span class="o">&amp;</span><span class="n">amp</span><span class="p">;);</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">josuttis</span><span class="o">::</span><span class="n">File</span> <span class="n">obj</span><span class="p">;</span>
+</span><span class='line'><span class="n">myGlobalFunc</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>  <span class="c1">// OK, lookup finds josuttis::myGlobalFunc()</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<p><strong>using declaration</strong>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">using</span> <span class="n">josuttis</span><span class="o">::</span><span class="n">File</span><span class="p">;</span>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">josuttis</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h5>2.2.6关键字explicit</h5>
+
+<p>explicit可以禁止“但参数构造函数”被用于自动类型转换。
+例如可以声明一个构造函数，以stack的初始大小为参数：
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">stack</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">explicit</span> <span class="n">Stack</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">);</span>   <span class="c1">// create stack with initial size</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<strong>explicit阻止了一个int自动转型为Stack</strong>
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Stack</span> <span class="n">s</span><span class="p">;</span>
+</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>     <span class="c1">// not permitted</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+explicit 同样阻止了以下情况
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Stack</span> <span class="n">s1</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
+</span><span class='line'><span class="n">Stack</span> <span class="n">s2</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>  <span class="c1">// ERROR</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+
+<h5>2.2.8 常量静态成员的初始化</h5>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
+</span><span class='line'><span class="p">{</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">elems</span><span class="p">[</span><span class="n">num</span><span class="p">];</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">};</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">const</span> <span class="kt">int</span> <span class="n">MyClass</span><span class="o">::</span><span class="n">num</span><span class="p">;</span>     <span class="c1">// no initialization here??</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Reading notes]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/18/reading-notes/"/>
+    <updated>2012-11-18T17:16:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/18/reading-notes</id>
+    <content type="html"><![CDATA[<p>读书笔记：
+记录一下自己目前在读的书：</p>
+
+<p>由于目前的事情比较多，而且要掌握的东西也挺多的，觉得一直在看一本书比较容易精神疲劳，所以就同时看了基本书。不过，这也难以避免的造成了许多内容看过就忘记了。甚至可能连书名也会忘记。。因此，为了备忘，就在这里记录自己目前正在看的书以及已经看完的部分。</p>
+
+<p>1、UNIX环境高级编程:除了书中最后两章以及书中的一部分章节没有看外，基本上是把这本书翻过一遍了。不过书中的要注意的细节实在太多，还必须经常翻翻并且多敲敲书上的代码才肯尼融汇贯通。</p>
+
+<p>2、C++PRIMER:最近又把前面的一半重新看了一遍，但是从STL开始的后面那部分还不是特别熟，要找个时间看。</p>
+
+<p>3、Effective C++:目前真在努力看的一本书，已经看到第30个条款了。</p>
+
+<p>4、C++标准程序库-自修教程与参考手册:个人感觉这门书讲STL讲得很好，目前只是看到了第6章STL容器</p>
+
+<p>5、LINUX+SHELL脚本攻略：刚刚起步。</p>
+
+<p>6、其他。。暂时未想起来。</p>
+]]></content>
+  </entry>
+  
+</feed>
