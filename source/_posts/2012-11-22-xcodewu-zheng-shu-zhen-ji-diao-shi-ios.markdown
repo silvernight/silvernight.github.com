@@ -1,0 +1,18 @@
+---
+layout: post
+title: "xcode无证书真机调试ios"
+date: 2012-11-22 16:08
+comments: true
+categories: [ios]
+---
+#xcode无证书真机调试ios
+记录一些资料：
+os开发的，问题还很多。因为真机调试需要开发者账号，这个要一年99美元，约>    和600多块人民币。而且还需要真机越狱，破解xcode。
+
+
+下面是一些相关链接：
+http://blog.csdn.net/vrix/article/details/7851377
+图文并茂 在ML OS X 10.8 + XCode4.4/4.4.1下实现无证书真机调试IOS5.1.1(亲测，附调试截图) 
+
+http://kqwd.blog.163.com/blog/static/4122344820117191351263/
+Xcode 4.1/4.2/4.3/4.4/4.5 + iOS 5.1.1免证书(iDP)开发+真机调试+生成IPA全攻略  

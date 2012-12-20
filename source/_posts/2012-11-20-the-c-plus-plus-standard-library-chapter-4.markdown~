@@ -1,0 +1,350 @@
+---
+layout: post
+title: "The C++ STANDARD LIBRARY CHAPTER 4"
+date: 2012-11-20 16:33
+comments: true
+categories: [reading , notes, c++]
+---
+#C++标准库-读书笔记-第四章--通用工具
+C++标准库的通用工具包括：
+* 数种通用类型(general types)
+* 一些重要的C函数
+* 数值极限(numeric limits)
+大部分通用工具定义在<utility>内。其余工具则与标准程序库中一些比较主要的组件一起描述。
+
+##4.1 Pairs
+{% codeblock lang:cpp %}
+namespace std {
+	template <class T1, class T2>
+		struct pair {
+			typedef T1 first_type;
+			typedef T2 second_type;
+
+			T1 first;
+			T2 second;
+
+			// default constructor, T1() and T2() force initialization for built-in types
+			pair() : first(T1()), second(T2()) {
+				
+			}
+			
+			// constructor for two values
+			pair (const T1& a, const T2& b)
+			: first(a), second(b) {
+				
+			}
+
+			// copy constructor with implicit conversions
+			template<class U, class V>
+				pair(const pair<U,V>& p)
+				: first(p.first), second(p.second) {
+
+				}
+		};
+
+	// comparisions
+	template <class T1, class T2>
+		bool operator== (const pair<T1,T2>& x, const pair<T1,T2>& y) {
+			return x.first == y.first && x.second == y.second;
+		}
+	template <class T1, class T2>
+		bool operator< (const pair<T1,T2>&, const pair<T1,T2>&);
+
+	// convenience function to create Pairs
+	template <class T1, class T2>
+		pair<T1,T2> make_pair (const T1& x, const T2& y) {
+			return pair<T1,T2>(x, y);
+		}
+}
+{% endcodeblock %}
+
+##4.2 Class auto_ptr
+auto_ptr是一种智能指针，帮助程序员防止“异常被抛出时发生资源泄露”。它只针对某个特定问题，对其他问题无能为力。
+
+###4.2.1 auto_ptr的发展动机
+如果资源是以显式的方式获得，而且为被系结于任何对象身上，则必须以显式手法释放。
+智能指针：
+{% codeblock lang:cpp %}
+#include <memory>
+
+void f()
+{
+	// create and initialize an auto_ptr
+	std::auto_ptr<ClassA> ptr(new classA);
+
+	std::auto_ptr<ClassA> ptr1(new ClassA);		// OK
+	std::auto_ptr<ClassA> ptr2 = new ClassA;	// ERROR, assign initialization is not permitted
+}
+{% endcodeblock %}
+
+###4.2.2 auto_ptr拥有权(Ownership)的转移
+执行auto_ptr的copy constructor和assignment operator时将把对象的拥有权交出去：
+{% codeblock lang:cpp %}
+// initialize an auto_ptr with a new object
+std::auto_ptr<ClassA> ptr1(new ClassA);
+
+// copy the auto_ptr transfers ownership from ptr1 to ptr2
+std::auto_ptr<ClassA> ptr2(ptr1);
+
+// initialize an auto_ptr with a new object
+std::auto_ptr<ClassA> ptr1(new ClassA);
+std::auto_ptr<ClassA> ptr2;	// create another auto_ptr
+ptr2 = ptr1;	// assign the auto_ptr transfers ownership from ptr1 to ptr2
+
+
+// initialize an auto_ptr with a new object
+std::auto_ptr<ClassA> ptr1(new ClassA);
+// initialize another auto_ptr with a new object
+std::auto_ptr<ClassA> ptr1(new ClassA);
+ptr2 = ptr1;	// assign the auto_ptr delete object owned by ptr2 
+				// - transfers ownership from 
+				// - ptr1 to ptr2
+{% endcodeblock %}
+
+####起点和终点
+1、 某函数是数据的终站
+2、 某函数是数据的起点。
+{% codeblock lang:cpp %}
+std::auto_ptr<ClassA> f()
+{
+	std::auto_ptr<ClassA> ptr(new ClassA);	// ptr owns the new oject
+	// ...
+	return ptr;		// transfers ownership to calling function
+}
+
+void g()
+{
+	std::auto_ptr<ClassA> p;
+	for (int i=0; i<10; ++i) {
+		p = f(); 
+	}
+}
+{% endcodeblock %}
+
+**如果你的auto_ptr在整个生命期内都不必改变其所指对象的所有权，你可以使用const auto_ptr。
+
+## 4.2.3 auto_ptrs 作为成员之一
+不使用auto_ptr作为引用成员：
+{% codeblock lang:cpp %}
+class classB {
+	private:
+		ClassA* ptr1;	// pointer members
+		ClassA* ptr2;
+	public:
+		// constructor that initializes the pointers
+		// - will cause resource leak if second new throws
+		ClassB (ClassA val1, ClassA val2)
+			: ptr1(new ClassA(val1)), ptr2(new ClassA(val2)) {
+
+			}
+
+		// copy constructor
+		// - might cause resource leak if second new throws
+		ClassB (const ClassB& x)
+			: ptr1(new ClassA(*x.ptr1)), ptr2(new ClassA(*x.ptr2)) {
+				
+			}
+
+		// assignment operator
+		const ClassB& operator= (const ClassB& x) {
+			*ptr1 = *x.ptr1;
+			*ptr2 = *x.ptr2;
+			return *this;
+		}
+
+		~ClassB () {
+			delete ptr1;
+			delete ptr2;
+		}
+};
+
+// 利用auto_ptr，即可轻松避免这场悲剧
+{% codeblock lang:cpp %}
+class classB {
+	private:
+		const std::auto_ptr<ClassA> ptr1;	// pointer members
+		const std::auto_ptr<ClassA> ptr2;
+	public:
+		// constructor that initializes the auto_ptrs
+		// - no resource leak
+		ClassB (ClassA val1, ClassA val2)
+			: ptr1(new ClassA(val1)), ptr2(new ClassA(val2)) {
+
+			}
+
+		// copy constructor
+		// - no resource leak possible
+		ClassB (const ClassB& x)
+			: ptr1(new ClassA(*x.ptr1)), ptr2(new ClassA(*x.ptr2)) {
+				
+			}
+
+		// assignment operator
+		const ClassB& operator= (const ClassB& x) {
+			*ptr1 = *x.ptr1;
+			*ptr2 = *x.ptr2;
+			return *this;
+		}
+
+		// no destructor
+		// (default destructor lets ptr1 and ptr2 delete their objects)
+};
+{% endcodeblock %}
+
+### 4.2.4 auto_ptrs的错误运用
+1、 auto_ptrs之间不能共享拥有权
+2、 并不存在针对array而设计的auto_ptrs
+3、 auto_ptrs决非一个“四海通用”的智能指针
+4、 auto_ptrs不满足STL容器对其元素的要求
+
+### 4.2.5 auto_ptr运用实例
+{% codeblock lang:cpp %}
+#include <iostream>
+#include <memory>
+using namespace std;
+
+/*  define output operator for auto_ptr
+ *  - print object value or null 
+ */
+template <class T>
+ostream& operator<< (ostream& strm, const auto_ptr<T>& p)
+{
+	if (p.get() == NULL) {
+		strm << "NULL";
+	} else {
+		strm << *p;
+	}
+	return strm;
+}
+
+int main(int argc, const char *argv[])
+{
+	auto_ptr<int> p(new int(42));
+	auto_ptr<int> q;
+
+	cout << "after initialization:" << endl;
+	cout << " p: " << p << endl;
+	cout << " q: " << q << endl;
+
+	q = p;
+	cout << "after assigning auto pointers:" << endl;
+	cout << " p: " << p << endl;
+	cout << " q: " << q << endl;
+
+	*q += 13;
+	p = q;
+	cout << "after change and reassignment:" << endl;
+	cout << " p: " << p << endl;
+	cout << " q: " << q << endl;
+	return 0;
+}
+{% endcodeblock %}
+
+###类型auto_ptr的实现范例
+下面的范例有蛮多地方值得推敲的，不过，最近实在没什么时间研究了，以后再看好了。
+{% codeblock lang:cpp %}
+// util/auto_ptr.hpp
+
+/*  class auto_ptr
+ *  - improved standard conforming implementation
+ */
+namespace std {
+	// auxiliary type to enable copies and assignment
+	template <class Y>
+		struct auto_ptr_ref {
+			Y* yp;
+			auto_ptr_ref (Y* rhs)
+				: yp(rhs) {
+					 
+				}
+		};
+
+	template <class T>
+		class auto_ptr {
+			private:
+				T* ap; // refers to the actual owned object (if any)
+			public:
+				typedef T element_type;
+
+				// constructor
+				explicit auto_ptr (T* ptr = 0) throw()
+					: ap(ptr) {
+					}
+
+				// copy constructors (with implicit conversion)
+				// - note: nonconstant parameter
+				auto_ptr (auto_ptr& rhs) throw()
+					: ap(rhs.release()) {
+
+					}
+				template <class Y>
+					auto_ptr (auto_ptr<Y>& rhs) throw()
+					: ap(rhs.release()) {
+
+					}
+
+				// assignment (with implicit conversion)
+				// - note: nonconstant parameter
+				auto_ptr& operator= (auto_ptr& rhs) throw() {
+					reset(rhs.release());
+					return *this;
+				}
+				template <class Y>
+					auto_ptr& operator= (auto_ptr<Y>& rhs) throw() {
+						reset(rhs.release());
+						return *this;
+					}
+
+				// destructor
+				~auto_ptr() throw() {
+					delete ap;
+				}
+
+				T* get() const throw() {
+					return ap;
+				}
+
+				T& operator*() const throw() {
+					return *ap;
+				}
+				
+				T* operator->() const throw() {
+					return ap;
+				}
+
+				// release ownership
+				T* release() throw() {
+					T* tmp(ap);
+					ap = 0;
+					return tmp;
+				}
+
+				// reset values
+				void reset (T* ptr=0) throw() {
+					if (ap != ptr) {
+						delete ap;
+						ap = ptr;
+					}
+				}
+
+				/*  sepcial conversions with autxiliary type to enable copies and assignments */
+				auto_ptr(auto_ptr_ref<T> rhs) throw()
+					: ap(rhs.yp) {
+
+					}
+				auto_ptr& operator= (auto_ptr_ref<T> rhs) throw() {
+					reset(rhs.yp);
+					return *this;
+				}
+
+				template<class Y>
+					operator auto_ptr_ref<Y>() throw() {
+						return auto_ptr_ref<Y>(release());
+					}
+				template<class Y>
+					operator auto_ptr<Y>() throw() {
+						return auto_ptr<Y>(release());
+					}
+		};
+}
+{% endcodeblock %}

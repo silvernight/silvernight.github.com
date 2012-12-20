@@ -1,0 +1,17 @@
+---
+layout: post
+title: "Unresolved Problems In C++"
+date: 2012-11-20 15:26
+comments: true
+categories: [ c, c++ ]
+---
+
+#C++中还不清楚的问题清单：
+最近一直在看C++的书，这里想吧我所能想到的、曾经遇到的还未能解决的C++的问题和概念列出来。
+
+1、public、protected、private的三种继承的区别。。
+2、结构体的计算方式
+3、STL的容器类和算法类
+4、多重继承。
+5、虚函数。
+6、static_cast、dynamic_cast、const_cast、reinterpret_cast的区别
