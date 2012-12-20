@@ -1,0 +1,810 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The C++ STANDARD LIBRARY CHAPTER 4 - Jamel Octopress Blog</title>
+	<meta name="author" content="Jamel@Silvernight">
+
+	
+	<meta name="description" content="C++标准库-读书笔记-第四章&#8211;通用工具 C++标准库的通用工具包括：
+* 数种通用类型(general types)
+* 一些重要的C函数
+* 数值极限(numeric limits)
+大部分通用工具定义在内。其余工具则与标准程序库中一些比较主要的组件一起描述。 4.1 Pairs &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="Jamel Octopress Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">Jamel Octopress Blog</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:silvernight.github.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:silvernight.github.com">
+	</form>
+</nav>
+
+</header>
+	
+		
+	
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">The C++ STANDARD LIBRARY CHAPTER 4</h1>
+	<div class="entry-content"><h1>C++标准库-读书笔记-第四章&#8211;通用工具</h1>
+
+<p>C++标准库的通用工具包括：
+* 数种通用类型(general types)
+* 一些重要的C函数
+* 数值极限(numeric limits)
+大部分通用工具定义在<utility>内。其余工具则与标准程序库中一些比较主要的组件一起描述。</p>
+
+<h2>4.1 Pairs</h2>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">namespace</span> <span class="n">std</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T2</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="k">struct</span> <span class="n">pair</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">typedef</span> <span class="n">T1</span> <span class="n">first_type</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">typedef</span> <span class="n">T2</span> <span class="n">second_type</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="n">T1</span> <span class="n">first</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">T2</span> <span class="n">second</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// default constructor, T1() and T2() force initialization for built-in types</span>
+</span><span class='line'>          <span class="n">pair</span><span class="p">()</span> <span class="o">:</span> <span class="n">first</span><span class="p">(</span><span class="n">T1</span><span class="p">()),</span> <span class="n">second</span><span class="p">(</span><span class="n">T2</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>              
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>          
+</span><span class='line'>          <span class="c1">// constructor for two values</span>
+</span><span class='line'>          <span class="n">pair</span> <span class="p">(</span><span class="k">const</span> <span class="n">T1</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">T2</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>          <span class="o">:</span> <span class="n">first</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">second</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>              
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="c1">// copy constructor with implicit conversions</span>
+</span><span class='line'>          <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">U</span><span class="p">,</span> <span class="k">class</span> <span class="nc">V</span><span class="o">&gt;</span>
+</span><span class='line'>              <span class="n">pair</span><span class="p">(</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">U</span><span class="p">,</span><span class="n">V</span><span class="o">&gt;&amp;</span> <span class="n">p</span><span class="p">)</span>
+</span><span class='line'>              <span class="o">:</span> <span class="n">first</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">),</span> <span class="n">second</span><span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// comparisions</span>
+</span><span class='line'>  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T2</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span> <span class="p">(</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="o">&gt;&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="o">&gt;&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">==</span> <span class="n">y</span><span class="p">.</span><span class="n">first</span> <span class="o">&amp;&amp;</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">==</span> <span class="n">y</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T2</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span> <span class="p">(</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="o">&gt;&amp;</span><span class="p">,</span> <span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="o">&gt;&amp;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// convenience function to create Pairs</span>
+</span><span class='line'>  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T1</span><span class="p">,</span> <span class="k">class</span> <span class="nc">T2</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="o">&gt;</span> <span class="n">make_pair</span> <span class="p">(</span><span class="k">const</span> <span class="n">T1</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">,</span> <span class="k">const</span> <span class="n">T2</span><span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">return</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">T1</span><span class="p">,</span><span class="n">T2</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>4.2 Class auto_ptr</h2>
+
+<p>auto_ptr是一种智能指针，帮助程序员防止“异常被抛出时发生资源泄露”。它只针对某个特定问题，对其他问题无能为力。</p>
+
+<h3>4.2.1 auto_ptr的发展动机</h3>
+
+<p>如果资源是以显式的方式获得，而且为被系结于任何对象身上，则必须以显式手法释放。
+智能指针：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;memory&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">f</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="c1">// create and initialize an auto_ptr</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr</span><span class="p">(</span><span class="k">new</span> <span class="n">classA</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>      <span class="c1">// OK</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ClassA</span><span class="p">;</span> <span class="c1">// ERROR, assign initialization is not permitted</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4.2.2 auto_ptr拥有权(Ownership)的转移</h3>
+
+<p>执行auto_ptr的copy constructor和assignment operator时将把对象的拥有权交出去：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// initialize an auto_ptr with a new object</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// copy the auto_ptr transfers ownership from ptr1 to ptr2</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr2</span><span class="p">(</span><span class="n">ptr1</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// initialize an auto_ptr with a new object</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr2</span><span class="p">;</span> <span class="c1">// create another auto_ptr</span>
+</span><span class='line'><span class="n">ptr2</span> <span class="o">=</span> <span class="n">ptr1</span><span class="p">;</span>  <span class="c1">// assign the auto_ptr transfers ownership from ptr1 to ptr2</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// initialize an auto_ptr with a new object</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>
+</span><span class='line'><span class="c1">// initialize another auto_ptr with a new object</span>
+</span><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>
+</span><span class='line'><span class="n">ptr2</span> <span class="o">=</span> <span class="n">ptr1</span><span class="p">;</span>  <span class="c1">// assign the auto_ptr delete object owned by ptr2 </span>
+</span><span class='line'>              <span class="c1">// - transfers ownership from </span>
+</span><span class='line'>              <span class="c1">// - ptr1 to ptr2</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>起点和终点</h4>
+
+<p>1、 某函数是数据的终站
+2、 某函数是数据的起点。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">f</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">);</span>   <span class="c1">// ptr owns the new oject</span>
+</span><span class='line'>  <span class="c1">// ...</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">ptr</span><span class="p">;</span>        <span class="c1">// transfers ownership to calling function</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">g</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">p</span> <span class="o">=</span> <span class="n">f</span><span class="p">();</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>**如果你的auto_ptr在整个生命期内都不必改变其所指对象的所有权，你可以使用const auto_ptr。</p>
+
+<h2>4.2.3 auto_ptrs 作为成员之一</h2>
+
+<p>不使用auto_ptr作为引用成员：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">classB</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
+</span><span class='line'>      <span class="n">ClassA</span><span class="o">*</span> <span class="n">ptr1</span><span class="p">;</span>   <span class="c1">// pointer members</span>
+</span><span class='line'>      <span class="n">ClassA</span><span class="o">*</span> <span class="n">ptr2</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
+</span><span class='line'>      <span class="c1">// constructor that initializes the pointers</span>
+</span><span class='line'>      <span class="c1">// - will cause resource leak if second new throws</span>
+</span><span class='line'>      <span class="n">ClassB</span> <span class="p">(</span><span class="n">ClassA</span> <span class="n">val1</span><span class="p">,</span> <span class="n">ClassA</span> <span class="n">val2</span><span class="p">)</span>
+</span><span class='line'>          <span class="o">:</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="n">val1</span><span class="p">)),</span> <span class="n">ptr2</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="n">val2</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// copy constructor</span>
+</span><span class='line'>      <span class="c1">// - might cause resource leak if second new throws</span>
+</span><span class='line'>      <span class="n">ClassB</span> <span class="p">(</span><span class="k">const</span> <span class="n">ClassB</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span>
+</span><span class='line'>          <span class="o">:</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr1</span><span class="p">)),</span> <span class="n">ptr2</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr2</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>              
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// assignment operator</span>
+</span><span class='line'>      <span class="k">const</span> <span class="n">ClassB</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">ClassB</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr1</span><span class="p">;</span>
+</span><span class='line'>          <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr2</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="o">~</span><span class="n">ClassB</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">delete</span> <span class="n">ptr1</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">delete</span> <span class="n">ptr2</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>// 利用auto_ptr，即可轻松避免这场悲剧</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">classB</span> <span class="p">{</span>
+</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
+</span><span class='line'>      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr1</span><span class="p">;</span>  <span class="c1">// pointer members</span>
+</span><span class='line'>      <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">ClassA</span><span class="o">&gt;</span> <span class="n">ptr2</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
+</span><span class='line'>      <span class="c1">// constructor that initializes the auto_ptrs</span>
+</span><span class='line'>      <span class="c1">// - no resource leak</span>
+</span><span class='line'>      <span class="n">ClassB</span> <span class="p">(</span><span class="n">ClassA</span> <span class="n">val1</span><span class="p">,</span> <span class="n">ClassA</span> <span class="n">val2</span><span class="p">)</span>
+</span><span class='line'>          <span class="o">:</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="n">val1</span><span class="p">)),</span> <span class="n">ptr2</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="n">val2</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// copy constructor</span>
+</span><span class='line'>      <span class="c1">// - no resource leak possible</span>
+</span><span class='line'>      <span class="n">ClassB</span> <span class="p">(</span><span class="k">const</span> <span class="n">ClassB</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span>
+</span><span class='line'>          <span class="o">:</span> <span class="n">ptr1</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr1</span><span class="p">)),</span> <span class="n">ptr2</span><span class="p">(</span><span class="k">new</span> <span class="n">ClassA</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr2</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>              
+</span><span class='line'>          <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// assignment operator</span>
+</span><span class='line'>      <span class="k">const</span> <span class="n">ClassB</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="k">const</span> <span class="n">ClassB</span><span class="o">&amp;</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>          <span class="o">*</span><span class="n">ptr1</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr1</span><span class="p">;</span>
+</span><span class='line'>          <span class="o">*</span><span class="n">ptr2</span> <span class="o">=</span> <span class="o">*</span><span class="n">x</span><span class="p">.</span><span class="n">ptr2</span><span class="p">;</span>
+</span><span class='line'>          <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// no destructor</span>
+</span><span class='line'>      <span class="c1">// (default destructor lets ptr1 and ptr2 delete their objects)</span>
+</span><span class='line'><span class="p">};</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>4.2.4 auto_ptrs的错误运用</h3>
+
+<p>1、 auto_ptrs之间不能共享拥有权
+2、 并不存在针对array而设计的auto_ptrs
+3、 auto_ptrs决非一个“四海通用”的智能指针
+4、 auto_ptrs不满足STL容器对其元素的要求</p>
+
+<h3>4.2.5 auto_ptr运用实例</h3>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;memory&gt;</span>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/*  define output operator for auto_ptr</span>
+</span><span class='line'><span class="cm"> *  - print object value or null </span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span><span class='line'><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">strm</span><span class="p">,</span> <span class="k">const</span> <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;&amp;</span> <span class="n">p</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">strm</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;NULL&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">strm</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">strm</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">(</span><span class="k">new</span> <span class="kt">int</span><span class="p">(</span><span class="mi">42</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;after initialization:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; p: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; q: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">q</span> <span class="o">=</span> <span class="n">p</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;after assigning auto pointers:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; p: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; q: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">*</span><span class="n">q</span> <span class="o">+=</span> <span class="mi">13</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">p</span> <span class="o">=</span> <span class="n">q</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;after change and reassignment:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; p: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">p</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; q: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">q</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>类型auto_ptr的实现范例</h3>
+
+<p>下面的范例有蛮多地方值得推敲的，不过，最近实在没什么时间研究了，以后再看好了。</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+<span class='line-number'>75</span>
+<span class='line-number'>76</span>
+<span class='line-number'>77</span>
+<span class='line-number'>78</span>
+<span class='line-number'>79</span>
+<span class='line-number'>80</span>
+<span class='line-number'>81</span>
+<span class='line-number'>82</span>
+<span class='line-number'>83</span>
+<span class='line-number'>84</span>
+<span class='line-number'>85</span>
+<span class='line-number'>86</span>
+<span class='line-number'>87</span>
+<span class='line-number'>88</span>
+<span class='line-number'>89</span>
+<span class='line-number'>90</span>
+<span class='line-number'>91</span>
+<span class='line-number'>92</span>
+<span class='line-number'>93</span>
+<span class='line-number'>94</span>
+<span class='line-number'>95</span>
+<span class='line-number'>96</span>
+<span class='line-number'>97</span>
+<span class='line-number'>98</span>
+<span class='line-number'>99</span>
+<span class='line-number'>100</span>
+<span class='line-number'>101</span>
+<span class='line-number'>102</span>
+<span class='line-number'>103</span>
+<span class='line-number'>104</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// util/auto_ptr.hpp</span>
+</span><span class='line'>
+</span><span class='line'><span class="cm">/*  class auto_ptr</span>
+</span><span class='line'><span class="cm"> *  - improved standard conforming implementation</span>
+</span><span class='line'><span class="cm"> */</span>
+</span><span class='line'><span class="k">namespace</span> <span class="n">std</span> <span class="p">{</span>
+</span><span class='line'>  <span class="c1">// auxiliary type to enable copies and assignment</span>
+</span><span class='line'>  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Y</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="k">struct</span> <span class="n">auto_ptr_ref</span> <span class="p">{</span>
+</span><span class='line'>          <span class="n">Y</span><span class="o">*</span> <span class="n">yp</span><span class="p">;</span>
+</span><span class='line'>          <span class="n">auto_ptr_ref</span> <span class="p">(</span><span class="n">Y</span><span class="o">*</span> <span class="n">rhs</span><span class="p">)</span>
+</span><span class='line'>              <span class="o">:</span> <span class="n">yp</span><span class="p">(</span><span class="n">rhs</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                  
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span><span class='line'>      <span class="k">class</span> <span class="nc">auto_ptr</span> <span class="p">{</span>
+</span><span class='line'>          <span class="k">private</span><span class="o">:</span>
+</span><span class='line'>              <span class="n">T</span><span class="o">*</span> <span class="n">ap</span><span class="p">;</span> <span class="c1">// refers to the actual owned object (if any)</span>
+</span><span class='line'>          <span class="k">public</span><span class="o">:</span>
+</span><span class='line'>              <span class="k">typedef</span> <span class="n">T</span> <span class="n">element_type</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="c1">// constructor</span>
+</span><span class='line'>              <span class="k">explicit</span> <span class="n">auto_ptr</span> <span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">ptr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span>
+</span><span class='line'>                  <span class="o">:</span> <span class="n">ap</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="c1">// copy constructors (with implicit conversion)</span>
+</span><span class='line'>              <span class="c1">// - note: nonconstant parameter</span>
+</span><span class='line'>              <span class="n">auto_ptr</span> <span class="p">(</span><span class="n">auto_ptr</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span>
+</span><span class='line'>                  <span class="o">:</span> <span class="n">ap</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">release</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>              <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Y</span><span class="o">&gt;</span>
+</span><span class='line'>                  <span class="n">auto_ptr</span> <span class="p">(</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span>
+</span><span class='line'>                  <span class="o">:</span> <span class="n">ap</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">release</span><span class="p">())</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="c1">// assignment (with implicit conversion)</span>
+</span><span class='line'>              <span class="c1">// - note: nonconstant parameter</span>
+</span><span class='line'>              <span class="n">auto_ptr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="n">auto_ptr</span><span class="o">&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="n">reset</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">release</span><span class="p">());</span>
+</span><span class='line'>                  <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>              <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">Y</span><span class="o">&gt;</span>
+</span><span class='line'>                  <span class="n">auto_ptr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;&amp;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="n">reset</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">release</span><span class="p">());</span>
+</span><span class='line'>                      <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="c1">// destructor</span>
+</span><span class='line'>              <span class="o">~</span><span class="n">auto_ptr</span><span class="p">()</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="k">delete</span> <span class="n">ap</span><span class="p">;</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="n">T</span><span class="o">*</span> <span class="n">get</span><span class="p">()</span> <span class="k">const</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="k">return</span> <span class="n">ap</span><span class="p">;</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="n">T</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">*</span><span class="p">()</span> <span class="k">const</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="k">return</span> <span class="o">*</span><span class="n">ap</span><span class="p">;</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>              
+</span><span class='line'>              <span class="n">T</span><span class="o">*</span> <span class="k">operator</span><span class="o">-&gt;</span><span class="p">()</span> <span class="k">const</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="k">return</span> <span class="n">ap</span><span class="p">;</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="c1">// release ownership</span>
+</span><span class='line'>              <span class="n">T</span><span class="o">*</span> <span class="n">release</span><span class="p">()</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="n">T</span><span class="o">*</span> <span class="n">tmp</span><span class="p">(</span><span class="n">ap</span><span class="p">);</span>
+</span><span class='line'>                  <span class="n">ap</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>                  <span class="k">return</span> <span class="n">tmp</span><span class="p">;</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="c1">// reset values</span>
+</span><span class='line'>              <span class="kt">void</span> <span class="n">reset</span> <span class="p">(</span><span class="n">T</span><span class="o">*</span> <span class="n">ptr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="k">if</span> <span class="p">(</span><span class="n">ap</span> <span class="o">!=</span> <span class="n">ptr</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="k">delete</span> <span class="n">ap</span><span class="p">;</span>
+</span><span class='line'>                      <span class="n">ap</span> <span class="o">=</span> <span class="n">ptr</span><span class="p">;</span>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="cm">/*  sepcial conversions with autxiliary type to enable copies and assignments */</span>
+</span><span class='line'>              <span class="n">auto_ptr</span><span class="p">(</span><span class="n">auto_ptr_ref</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span>
+</span><span class='line'>                  <span class="o">:</span> <span class="n">ap</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">yp</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>              <span class="n">auto_ptr</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span> <span class="p">(</span><span class="n">auto_ptr_ref</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">rhs</span><span class="p">)</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="n">reset</span><span class="p">(</span><span class="n">rhs</span><span class="p">.</span><span class="n">yp</span><span class="p">);</span>
+</span><span class='line'>                  <span class="k">return</span> <span class="o">*</span><span class="k">this</span><span class="p">;</span>
+</span><span class='line'>              <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>              <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">Y</span><span class="o">&gt;</span>
+</span><span class='line'>                  <span class="k">operator</span> <span class="n">auto_ptr_ref</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;</span><span class="p">()</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="k">return</span> <span class="n">auto_ptr_ref</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;</span><span class="p">(</span><span class="n">release</span><span class="p">());</span>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>              <span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">Y</span><span class="o">&gt;</span>
+</span><span class='line'>                  <span class="k">operator</span> <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;</span><span class="p">()</span> <span class="k">throw</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>                      <span class="k">return</span> <span class="n">auto_ptr</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">&gt;</span><span class="p">(</span><span class="n">release</span><span class="p">());</span>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>      <span class="p">};</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-20T16:33:00+08:00" pubdate data-updated="true">Nov 20<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-/'>c++</a>, <a class='category' href='/blog/categories/notes/'>notes</a>, <a class='category' href='/blog/categories/reading/'>reading</a>
+
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+<section id="comment">
+    <h1 class="title">Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</section>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Jamel@Silvernight
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+<script type="text/javascript">
+      var disqus_shortname = 'silvernight';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://silvernight.github.com/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-4/';
+        var disqus_url = 'http://silvernight.github.com/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-4/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+</body>
+</html>

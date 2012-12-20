@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: vim | Jamel Octopress Blog]]></title>
+  <link href="http://silvernight.github.com/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://silvernight.github.com/"/>
+  <updated>2012-12-20T15:03:20+08:00</updated>
+  <id>http://silvernight.github.com/</id>
+  <author>
+    <name><![CDATA[Jamel@Silvernight]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[vim自动化命令]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/26/vimzi-dong-hua-ming-ling/"/>
+    <updated>2012-11-26T19:30:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/26/vimzi-dong-hua-ming-ling</id>
+    <content type="html"><![CDATA[<p>参考链接:<a href="http://www.ibm.com/developerworks/cn/linux/l-vim-script-5/">http://www.ibm.com/developerworks/cn/linux/l-vim-script-5/</a>
+刚刚联想到snipmate的代码补全时循环变量的自动复写更新的功能很有趣。
+于是自己想简单模拟写了一条自动命令，写得很粗糙：
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>augroup repeatline
+</span><span class='line'>autocmd <span class="nb">CursorMovedI</span> *.txt :<span class="k">call</span> setline<span class="p">(</span>line<span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)+</span><span class="m">1</span><span class="p">,</span> getline<span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+</span><span class='line'>augroup END
+</span></code></pre></td></tr></table></div></figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: life | Jamel Octopress Blog]]></title>
   <link href="http://silvernight.github.com/blog/categories/life/atom.xml" rel="self"/>
   <link href="http://silvernight.github.com/"/>
-  <updated>2012-11-20T09:35:50+08:00</updated>
+  <updated>2012-12-20T15:03:20+08:00</updated>
   <id>http://silvernight.github.com/</id>
   <author>
     <name><![CDATA[Jamel@Silvernight]]></name>
@@ -12,6 +12,64 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[毕业设计]]></title>
+    <link href="http://silvernight.github.com/blog/2012/12/02/bi-ye-she-ji/"/>
+    <updated>2012-12-02T19:56:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/12/02/bi-ye-she-ji</id>
+    <content type="html"><![CDATA[<h2>毕业设计的设想：</h2>
+
+<p>1、聊天软件
+2、字典软件
+3、播放器</p>
+
+<!--more-->
+
+
+<p>4、服务器（多媒体服务器、游戏服务器、网盘、云服务器）</p>
+
+<pre><code>例子:
+    游戏服务器：mongos
+    服务器开发框架：easynetwork
+</code></pre>
+
+<p>5、邮件客户端
+6、ftp服务器、客户端</p>
+
+<h3>参考实例：</h3>
+
+<p>QT实现的聊天软件：</p>
+
+<pre><code>&lt;http://blog.csdn.net/aaa20090987/article/details/6998514&gt;
+</code></pre>
+
+<p>太阳神三国杀(C++,QT)</p>
+
+<pre><code>&lt;https://github.com/Moligaloo/QSanguosha&gt;
+</code></pre>
+
+<p>网狐6.6.0.1棋牌全套源码包括视频教程</p>
+
+<pre><code>&lt;http://www.hicode.cn/download/view-software-8910.html&gt;
+</code></pre>
+
+<p>OwnCloud</p>
+
+<pre><code>&lt;http://owncloud.org/support/install/&gt;
+</code></pre>
+
+<h3>参考网站:</h3>
+
+<pre><code>&lt;svn.jundie.net&gt;    里面有一些托管在这个网站的项目
+</code></pre>
+
+<h3>参考博客：</h3>
+
+<pre><code>&lt;http://blog.csdn.net/AAA20090987/&gt;     C++、QT、 Linux博客
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My first post]]></title>

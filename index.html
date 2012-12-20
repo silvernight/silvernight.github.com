@@ -7,9 +7,9 @@
 	<meta name="author" content="Jamel@Silvernight">
 
 	
-	<meta name="description" content=" C++标准库-读书笔记-第三章&#8211;一般概念 3.3错误处理和异常处理 标准异常类别可分为三组： 1. 语言本身支持的异常
-2. C++标准库发出的异常
-3. 程序作用域之外发出的异常 Nov 20th, 2012 notes, reading ">
+	<meta name="description" content=" 毕业设计的设想： 1、聊天软件
+2、字典软件
+3、播放器 Read on &rarr; Dec 2nd, 2012 college, life ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -75,20 +75,62 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-3/">The C++ STANDARD LIBRARY CHAPTER 3</a></h1>
+	<h1 class="title"><a href="/blog/2012/12/02/bi-ye-she-ji/">毕业设计</a></h1>
 	<div class="entry-content">
-		<h1>C++标准库-读书笔记-第三章&#8211;一般概念</h1>
+		<h2>毕业设计的设想：</h2>
 
-<h3>3.3错误处理和异常处理</h3>
+<p>1、聊天软件
+2、字典软件
+3、播放器</p>
 
-<p>标准异常类别可分为三组：</p>
 
-<pre><code>1. 语言本身支持的异常
-2. C++标准库发出的异常
-3. 程序作用域之外发出的异常
-</code></pre>
+		
+		<a href="/blog/2012/12/02/bi-ye-she-ji/" class="more-link">Read on &rarr;</a>
+	</div>
 
-<p><img src="images/fancybox/fancybox_loading.gif" alt="test picture" /></p>
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-02T19:56:00+08:00" pubdate data-updated="true">Dec 2<span>nd</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/college/'>college</a>, <a class='category' href='/blog/categories/life/'>life</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/2012/11/26/vimzi-dong-hua-ming-ling/">Vim自动化命令</a></h1>
+	<div class="entry-content">
+		<p>参考链接:<a href="http://www.ibm.com/developerworks/cn/linux/l-vim-script-5/">http://www.ibm.com/developerworks/cn/linux/l-vim-script-5/</a>
+刚刚联想到snipmate的代码补全时循环变量的自动复写更新的功能很有趣。
+于是自己想简单模拟写了一条自动命令，写得很粗糙：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>augroup repeatline
+</span><span class='line'>autocmd <span class="nb">CursorMovedI</span> *.txt :<span class="k">call</span> setline<span class="p">(</span>line<span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)+</span><span class="m">1</span><span class="p">,</span> getline<span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">))</span>
+</span><span class='line'>augroup END
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 		
 		
@@ -108,11 +150,11 @@
   
 
 
-<time datetime="2012-11-20T09:20:00+08:00" pubdate data-updated="true">Nov 20<span>th</span>, 2012</time></div>
+<time datetime="2012-11-26T19:30:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/notes/'>notes</a>, <a class='category' href='/blog/categories/reading/'>reading</a>
+	<a class='category' href='/blog/categories/vim/'>vim</a>
 
 
 </div>
@@ -121,65 +163,143 @@
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/20/the-c-plus-plus-standard-library-chapter-2/">The C++ STANDARD LIBRARY CHAPTER 2</a></h1>
+	<h1 class="title"><a href="/blog/2012/11/26/copy-and-swap-technique/">Copy and Swap Technique</a></h1>
 	<div class="entry-content">
-		<h1>C++标准库-读书笔记-第二章</h1>
-
-<h4>2.1</h4>
-
-<p>1、标准程序库并非基于某本书或某一个现成的函数库，而是将各种不同的类（classes）整合而成。你会发现不同组件背后有不同的设计原则，string class 和 STL之间的差别就是很好的例子，
-后者是一个数据结构和算法框架。</p>
-
-<ul>
-<li>string classes 被设计为安全易用的组件，其界面几乎不言自明，并能对许多可能的错误作检验。</li>
-<li>STL的设计目标，是将不同的算法和数据结构结合在一起，并获取最佳效率，所以STL并不非常便利，也不检验许多可能的逻辑错误。要运用STL强大的框架和优异的效率，你就必须通晓其概念并小心运用。</li>
-</ul>
-
-
-<h4>2.2.1 template</h4>
+		<p>Copy and Swap 技术可以在一定程度上来解决对某个对象进行修改时抛出异常的问题。
+例如，当对某个容器进行插入操作时可以这样实现：</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
-</span><span class='line'><span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">max</span> <span class="p">(</span><span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Cont</span><span class="p">,</span> <span class="k">class</span> <span class="nc">Iter</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">insert</span> <span class="p">(</span><span class="n">Cont</span><span class="o">&amp;</span> <span class="n">coll</span><span class="p">,</span> <span class="k">const</span> <span class="n">Iter</span><span class="o">&amp;</span> <span class="n">pos</span><span class="p">,</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">return</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span> <span class="o">?</span> <span class="n">b</span> <span class="o">:</span> <span class="n">a</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">Cont</span> <span class="n">tmp</span><span class="p">(</span><span class="n">coll</span><span class="p">);</span>              <span class="cm">/* copy container and all elements */</span>
+</span><span class='line'>    <span class="n">tmp</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>      <span class="cm">/* modify the copy */</span>
+</span><span class='line'>    <span class="n">coll</span><span class="p">.</span><span class="n">swap</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>              <span class="cm">/* use copy (in case no exception was thrown) */</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h6>Nontype Templates（非类型模板参数）</h6>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">32</span><span class="o">&gt;</span> <span class="n">flags32</span><span class="p">;</span>
-</span><span class='line'><span class="n">bitset</span><span class="o">&lt;</span><span class="mi">50</span><span class="o">&gt;</span> <span class="n">flags50</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
 
 
-<p>这些bitsets由于使用不同的template参数，所以有不同的类型。</p>
+		
+		
+	</div>
 
-<h6>Default Template Parameters</h6>
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T09:26:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-/'>c++</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/2012/11/26/template-techniques/">Template Techniques</a></h1>
+	<div class="entry-content">
+		<p>C++模板的类型：</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">,</span> <span class="k">class</span> <span class="nc">container</span> <span class="o">=</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">&gt;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span><span class="p">;</span>
-</span><span class='line'><span class="n">MyClass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">x1</span><span class="p">;</span>     <span class="c1">// equivalent to: MyClass&lt;int, vector&lt;int&gt; &gt;</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// Type 1</span>
+</span><span class='line'><span class="n">tempalte</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kr">inline</span> <span class="k">const</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">max</span> <span class="p">(</span><span class="n">cont</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="n">cont</span> <span class="n">T</span><span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="p">(</span><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Type 2</span>
+</span><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="kt">int</span> <span class="n">theValue</span><span class="o">&gt;</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">add</span><span class="p">(</span><span class="kt">int</span><span class="o">&amp;</span> <span class="n">elem</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">elem</span> <span class="o">+=</span> <span class="n">theValue</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">f1</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">col1</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">for_each</span><span class="p">(</span><span class="n">col1</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">col1</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">add</span><span class="o">&lt;</span><span class="mi">10</span><span class="o">&gt;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h5>typename - 被用来作为类型之前的标识符。</h5>
 
-<h5>成员模板</h5>
 
-<p>类成员模板可以是个template，但它既不能是virtual，也不能有预设参数。</p>
+		
+		
+	</div>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-26T07:19:00+08:00" pubdate data-updated="true">Nov 26<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-/'>c++</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/2012/11/25/shi-yong-ifstreamhe-getlinedu-qu-wen-jian-nei-rong/">使用ifstream和getline读取文件内容</a></h1>
+	<div class="entry-content">
+		<figure class='code'><figcaption><span> (ifstreamANDgetline.cpp)</span> <a href='/downloads/code/cpp/stl/ifstreamANDgetline.cpp'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -206,40 +326,201 @@
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;fstream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">ReadDataFromFileWBW</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">private</span><span class="o">:</span>
-</span><span class='line'>      <span class="n">T</span> <span class="n">value</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">ifstream</span> <span class="n">fin</span><span class="p">(</span><span class="s">&quot;test.cpp&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">fin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Read from file:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
-</span><span class='line'>      <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">X</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="kt">void</span> <span class="n">assign</span><span class="p">(</span><span class="k">const</span> <span class="n">MyClass</span><span class="o">&lt;</span><span class="n">X</span><span class="o">&gt;&amp;</span> <span class="n">x</span><span class="p">)</span>    <span class="cm">/* allows different template types */</span>
-</span><span class='line'>          <span class="p">{</span>
-</span><span class='line'>              <span class="n">value</span> <span class="o">=</span> <span class="n">X</span><span class="p">.</span><span class="n">getValue</span><span class="p">();</span>           <span class="cm">/* different types can&#39;t access private or protected members */</span>
-</span><span class='line'>          <span class="p">}</span>
-</span><span class='line'>      <span class="n">T</span> <span class="n">getValue</span> <span class="p">()</span> <span class="k">const</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
-</span><span class='line'>      <span class="p">}</span>
-</span><span class='line'>      <span class="p">...</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="kt">void</span> <span class="n">f</span><span class="p">()</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">ReadDataFromFileLBLIntoCharArray</span><span class="p">()</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">MyClass</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">d</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">MyClass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">ifstream</span> <span class="n">fin</span><span class="p">(</span><span class="s">&quot;test.cpp&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">const</span> <span class="kt">int</span> <span class="n">LINE_LENGTH</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+</span><span class='line'>  <span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="n">LINE_LENGTH</span><span class="p">];</span>
+</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">fin</span><span class="p">.</span><span class="n">getline</span><span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="n">LINE_LENGTH</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Read from file: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">str</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="n">d</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
-</span><span class='line'>  <span class="n">d</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>  <span class="c1">// OK, (int is assignable to double)</span>
+</span><span class='line'><span class="kt">void</span> <span class="n">ReadDataFromFileLBLIntoString</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">ifstream</span> <span class="n">fin</span><span class="p">(</span><span class="s">&quot;test.cpp&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">while</span> <span class="p">(</span><span class="n">getline</span><span class="p">(</span><span class="n">fin</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Read from file:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">void</span> <span class="n">ReadDataWithErrChecking</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">string</span> <span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;test.cpp&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">ifstream</span> <span class="n">fin</span><span class="p">(</span><span class="n">filename</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fin</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Error opening&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">filename</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;for input&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>      <span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">ReadDataFromFileWBW</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">ReadDataFromFileLBLIntoCharArray</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">ReadDataFromFileLBLIntoString</span><span class="p">();</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">ReadDataWithErrChecking</span><span class="p">();</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>template copy constructor</strong>
-copy constructor with implicit type conversion does not hide implicit copy constructor</p>
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-25T19:13:00+08:00" pubdate data-updated="true">Nov 25<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-/'>c++</a>, <a class='category' href='/blog/categories/stl/'>stl</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/2012/11/25/stl-algorithmshi-yong-han-shu/">STL Algorithm实用函数</a></h1>
+	<div class="entry-content">
+		<h3>随机洗牌函数random_shuffle</h3>
+
+<p>如果要保证每次程序运行时的洗牌结果不一样，需要在调用该函数前，调用srand(time(NULL))</p>
 
 <figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">nt</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ivec</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">ivec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">srand</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">NULL</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">random_shuffle</span><span class="p">(</span><span class="n">ivec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">ivec</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</span><span class='line'>  <span class="n">copy</span><span class="p">(</span><span class="n">ivec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">ivec</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">));</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-11-25T18:52:00+08:00" pubdate data-updated="true">Nov 25<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+
+	<a class='category' href='/blog/categories/c-/'>c++</a>, <a class='category' href='/blog/categories/stl/'>stl</a>
+
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/blog/2012/11/25/ostream-iteratorying-yong-shi-li/">Ostream_iterator应用实例</a></h1>
+	<div class="entry-content">
+		<p>最近在恶补STL，刚刚发现了ostream_iterator的妙用。</p>
+
+<h2>一条代码输出vector容器的内容</h2>
+
+<figure class='code'><figcaption><span>printout vector elements  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -255,327 +536,45 @@ copy constructor with implicit type conversion does not hide implicit copy const
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
 <span class='line-number'>16</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">public</span><span class="o">:</span>
-</span><span class='line'>      <span class="c1">// copy constructor with implicit type conversion</span>
-</span><span class='line'>      <span class="c1">// does not hide implicit copy constructor</span>
-</span><span class='line'>      <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">U</span><span class="o">&gt;</span>
-</span><span class='line'>          <span class="n">MyClass</span> <span class="p">(</span><span class="k">const</span> <span class="n">MyClass</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;&amp;</span> <span class="n">x</span><span class="p">);</span>
-</span><span class='line'><span class="p">};</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;algorithm&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;vector&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;iterator&gt;</span>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="kt">void</span> <span class="n">f</span><span class="p">()</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
 </span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="n">MyClass</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">xd</span><span class="p">;</span>
-</span><span class='line'>  <span class="n">MyClass</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">xd2</span><span class="p">(</span><span class="n">xd</span><span class="p">);</span> <span class="c1">// calls built-in copy constructor</span>
-</span><span class='line'>  <span class="n">MyCLass</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">xi</span><span class="p">(</span><span class="n">xd</span><span class="p">);</span>     <span class="c1">// calls template copy constructor</span>
+</span><span class='line'>  <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span class='line'>  <span class="c1">// 使用copy复制vec的所有元素到标准输出，并以空格分隔</span>
+</span><span class='line'>  <span class="n">copy</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">));</span>    <span class="c1">// 注意ostream_iterator的模板参数类型是int</span>
+</span><span class='line'>  <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span> <span class="n">os_iter</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="s">&quot; ~ &quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="o">*</span><span class="n">os_iter</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>            <span class="cm">/* 向cout缓冲区写入数据1.0 */</span>
+</span><span class='line'>  <span class="o">*</span><span class="n">os_iter</span> <span class="o">=</span> <span class="mf">2.0</span><span class="p">;</span>            <span class="cm">/* 向cout缓冲区写入数据2.0 */</span>
+</span><span class='line'>  <span class="o">*</span><span class="n">os_iter</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span>            <span class="cm">/* 向cout缓冲区写入数据3.0 */</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 </span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>Nested Template Classes</strong></p>
+<p>Result:</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T2</span><span class="o">&gt;</span>
-</span><span class='line'>      <span class="k">class</span> <span class="nc">NestedClass</span>
-</span><span class='line'>      <span class="p">{</span>
-</span><span class='line'>          
-</span><span class='line'>      <span class="p">};</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>1 2 3 4 5 6 7 8 9 10 1 ~ 2 ~ 3 ~</span></code></pre></td></tr></table></div></figure>
 
 
-<h4>namespace</h4>
+<h2>一条代码输出map容器的内容</h2>
 
-<p>如果某个函数的一个或多个引用类型，都定义在函数所在的namespace中，那么你不必为该函数指定namespace。这个规则称为Koening lookup。
-例如：</p>
+<p>由于map容器存储的元素是键值对，所以不能像vector容器一样直接输出元素，
+需要重载&lt;&lt;运算符。
+详情参考<a href="http://www.cppblog.com/Young/archive/2012/11/18/195333.aspx">http://www.cppblog.com/Young/archive/2012/11/18/195333.aspx</a>
+这里我采用了里面介绍的比较简单的第二种方法，使用transform函数取代copy函数。</p>
 
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="c1">// define identifiers in namespace josuttis</span>
-</span><span class='line'><span class="k">namespace</span> <span class="n">josuttis</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">class</span> <span class="nc">File</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">void</span> <span class="n">myGlobalFunc</span><span class="p">(</span><span class="k">const</span> <span class="n">File</span><span class="o">&amp;</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">josuttis</span><span class="o">::</span><span class="n">File</span> <span class="n">obj</span><span class="p">;</span>
-</span><span class='line'><span class="n">myGlobalFunc</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>    <span class="c1">// OK, lookup finds josuttis::myGlobalFunc()</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>using declaration</strong></p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">using</span> <span class="n">josuttis</span><span class="o">::</span><span class="n">File</span><span class="p">;</span>
-</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">josuttis</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h5>2.2.6关键字explicit</h5>
-
-<p>explicit可以禁止“但参数构造函数”被用于自动类型转换。
-例如可以声明一个构造函数，以stack的初始大小为参数：</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">stack</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">explicit</span> <span class="n">Stack</span><span class="p">(</span><span class="kt">int</span> <span class="n">size</span><span class="p">);</span>    <span class="c1">// create stack with initial size</span>
-</span><span class='line'><span class="p">};</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>explicit阻止了一个int自动转型为Stack</strong></p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Stack</span> <span class="n">s</span><span class="p">;</span>
-</span><span class='line'><span class="n">s</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>      <span class="c1">// not permitted</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>explicit 同样阻止了以下情况</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="n">Stack</span> <span class="n">s1</span><span class="p">(</span><span class="mi">40</span><span class="p">);</span>
-</span><span class='line'><span class="n">Stack</span> <span class="n">s2</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span>    <span class="c1">// ERROR</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h5>2.2.8 常量静态成员的初始化</h5>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="k">class</span> <span class="nc">MyClass</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>  <span class="k">static</span> <span class="k">const</span> <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
-</span><span class='line'>  <span class="kt">int</span> <span class="n">elems</span><span class="p">[</span><span class="n">num</span><span class="p">];</span>
-</span><span class='line'><span class="p">};</span>
-</span><span class='line'>
-</span><span class='line'><span class="k">const</span> <span class="kt">int</span> <span class="n">MyClass</span><span class="o">::</span><span class="n">num</span><span class="p">;</span>        <span class="c1">// no initialization here?? </span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-20T08:13:00+08:00" pubdate data-updated="true">Nov 20<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/notes/'>notes</a>, <a class='category' href='/blog/categories/reading/'>reading</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/18/reading-notes/">Reading Notes</a></h1>
-	<div class="entry-content">
-		<p>读书笔记：
-记录一下自己目前在读的书：</p>
-
-<p>由于目前的事情比较多，而且要掌握的东西也挺多的，觉得一直在看一本书比较容易精神疲劳，所以就同时看了基本书。不过，这也难以避免的造成了许多内容看过就忘记了。甚至可能连书名也会忘记。。因此，为了备忘，就在这里记录自己目前正在看的书以及已经看完的部分。</p>
-
-<p>1、UNIX环境高级编程:除了书中最后两章以及书中的一部分章节没有看外，基本上是把这本书翻过一遍了。不过书中的要注意的细节实在太多，还必须经常翻翻并且多敲敲书上的代码才肯尼融汇贯通。</p>
-
-<p>2、C++PRIMER:最近又把前面的一半重新看了一遍，但是从STL开始的后面那部分还不是特别熟，要找个时间看。</p>
-
-<p>3、Effective C++:目前真在努力看的一本书，已经看到第30个条款了。</p>
-
-<p>4、C++标准程序库-自修教程与参考手册:个人感觉这门书讲STL讲得很好，目前只是看到了第6章STL容器</p>
-
-<p>5、LINUX+SHELL脚本攻略：刚刚起步。</p>
-
-<p>6、其他。。暂时未想起来。</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-18T17:16:00+08:00" pubdate data-updated="true">Nov 18<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/notes/'>notes</a>, <a class='category' href='/blog/categories/reading/'>reading</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/16/install-octopress-on-arch/">Install_octopress_on_arch</a></h1>
-	<div class="entry-content">
-		<h2>install rvm on archlinux</h2>
-
-<h3>1.安装 git</h3>
-
-<p>$ sudo pacman -S git</p>
-
-<h3>2.安装 rvm[2]</h3>
-
-<p>$ curl https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer | bash -s stable</p>
-
-<h3>3.在 .bashrc/.zshrc 加入RVM函数</h3>
-
-<p>$ echo &#8216;[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; source $HOME/.rvm/scripts/rvm&#8217; >> ~/.zshrc
-source ~/.zshrc</p>
-
-<h3>4.根据安装脚本提示输入</h3>
-
-<p>$ source /home/jamel/.rvm/scripts/rvm</p>
-
-<h3>5.安装依赖包（下面命令会输出一个指南，直接复制其中的命令就行）:</h3>
-
-<p>$ rvm requirements</p>
-
-
-		
-		<a href="/blog/2012/11/16/install-octopress-on-arch/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-16T15:01:00+08:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/archlinux/'>archlinux</a>, <a class='category' href='/blog/categories/octopress/'>octopress</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/16/shell-related-commands/">Shell Related Commands</a></h1>
-	<div class="entry-content">
-		<h3>更改默认的登陆shell</h3>
-
-<p>以下命令可以更改默认的登陆shell:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>chsh -s /bin/bash
-</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-16T13:39:00+08:00" pubdate data-updated="true">Nov 16<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/commands/'>commands</a>, <a class='category' href='/blog/categories/mac/'>mac</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/15/octopress-test/">Octopress Test</a></h1>
-	<div class="entry-content">
-		<h1>Just For test</h1>
-
-<h3>include code:</h3>
-
-<figure class='code'><figcaption><span> (test.js)</span> <a href='/downloads/code/test.js'>download</a></figcaption>
+<figure class='code'><figcaption><span> (PrintOutMapContents.cpp)</span> <a href='/downloads/code/cpp/stl/PrintOutMapContents.cpp'>download</a></figcaption>
  <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -597,37 +596,161 @@ source ~/.zshrc</p>
 <span class='line-number'>19</span>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="cm">/**</span>
-</span><span class='line'><span class="cm"> * sample javascript from xui</span>
-</span><span class='line'><span class="cm"> * */</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;fstream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;sstream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;algorithm&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;vector&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;map&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;iterator&gt;</span>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 </span><span class='line'>
-</span><span class='line'><span class="kd">var</span> <span class="kc">undefined</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">xui</span><span class="p">,</span>
-</span><span class='line'>  <span class="nb">window</span>     <span class="o">=</span> <span class="k">this</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">string</span>     <span class="o">=</span> <span class="k">new</span> <span class="nb">String</span><span class="p">(</span><span class="s1">&#39;string&#39;</span><span class="p">),</span>
-</span><span class='line'>  <span class="nb">document</span>   <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nb">document</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">simpleExpr</span> <span class="o">=</span> <span class="sr">/^#?([\w-]+)$/</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">idExpr</span>     <span class="o">=</span> <span class="sr">/^#/</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">tagExpr</span>    <span class="o">=</span> <span class="sr">/&lt;([\w:]+)/</span><span class="p">,</span>
-</span><span class='line'>  <span class="nx">slice</span>      <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[].</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>  <span class="p">};</span>
-</span><span class='line'><span class="k">try</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">slice</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">)[</span><span class="mi">0</span><span class="p">].</span><span class="nx">nodeType</span><span class="p">;</span>  <span class="p">}</span>
-</span><span class='line'><span class="k">catch</span><span class="p">(</span><span class="nx">e</span><span class="p">){</span> <span class="nx">slice</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span> <span class="kd">var</span> <span class="nx">ret</span><span class="o">=</span><span class="p">[];</span> <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
-</span><span class='line'>  <span class="nx">ret</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">e</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span> <span class="k">return</span> <span class="nx">ret</span><span class="p">;</span>   <span class="p">};</span>  <span class="p">}</span>
+</span><span class='line'><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span> <span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">,</span> <span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">str</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">out</span> <span class="o">&lt;&lt;</span> <span class="n">str</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="nb">window</span><span class="p">.</span><span class="nx">x$</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">xui</span> <span class="o">=</span> <span class="nx">xui</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-</span><span class='line'>      <span class="k">return</span> <span class="k">new</span> <span class="nx">xui</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">q</span><span class="p">,</span> <span class="nx">context</span><span class="p">);</span>
+</span><span class='line'><span class="n">string</span> <span class="n">toString</span><span class="p">(</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="k">const</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">value</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">ostringstream</span> <span class="n">ost</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">ost</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;(&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;,&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;)&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">ost</span><span class="p">.</span><span class="n">str</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
 </span><span class='line'>
-</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">imap</span><span class="p">;</span>
+</span><span class='line'>  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+</span><span class='line'>      <span class="c1">//imap.insert( map&lt;int, int&gt;::value_type(i, i*10) );</span>
+</span><span class='line'>      <span class="n">imap</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">*</span><span class="mi">10</span><span class="p">;</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="n">transform</span><span class="p">(</span><span class="n">imap</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">imap</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">),</span> <span class="n">toString</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>include picture</h3>
+<h2>逐个单词读取文件，并输出到控制台</h2>
 
-<p><img src="http://i5.minus.com:81/i01yeD3zCWPoV.jpg" alt="test picture" /></p>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;fstream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;algorithm&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;vector&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;iterator&gt;</span>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">ifstream</span> <span class="n">ifs</span><span class="p">(</span><span class="s">&quot;FindInArray.cpp&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">ifs</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;file is not found&quot;</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">ibeg</span><span class="p">(</span><span class="n">ifs</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">iend</span><span class="p">;</span>
+</span><span class='line'>  <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">(</span><span class="n">ibeg</span><span class="p">,</span> <span class="n">iend</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">copy</span><span class="p">(</span><span class="n">vec</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">vec</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">cout</span><span class="p">,</span> <span class="s">&quot; &quot;</span><span class="p">));</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>使用istream_iterator,ostream_iterator读取文件并输出到另一个文件</h2>
+
+<figure class='code'><figcaption><span> (RWFileByIOstream_iterator.cpp)</span> <a href='/downloads/code/cpp/stl/RWFileByIOstream_iterator.cpp'>download</a></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='cpp'><span class='line'><span class="cp">#include &lt;fstream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;sstream&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;algorithm&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;vector&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;map&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;iterator&gt;</span>
+</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="n">ifstream</span> <span class="n">in_file</span><span class="p">(</span><span class="s">&quot;test.cpp&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">ofstream</span> <span class="n">out_file</span><span class="p">(</span><span class="s">&quot;output_file.cpp&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">in_file</span> <span class="o">||</span> <span class="o">!</span><span class="n">out_file</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;cannot open file!&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">is</span><span class="p">(</span><span class="n">in_file</span><span class="p">);</span>       <span class="cm">/* first iterator */</span>
+</span><span class='line'>  <span class="n">istream_iterator</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">eof</span><span class="p">;</span>               <span class="cm">/* end of file iterator */</span>
+</span><span class='line'>  <span class="n">vector</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">text</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1">// using back_inserter to call container&#39;s push_back to insert new elements</span>
+</span><span class='line'>  <span class="n">copy</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">eof</span><span class="p">,</span> <span class="n">back_inserter</span><span class="p">(</span><span class="n">text</span><span class="p">));</span>
+</span><span class='line'>  <span class="n">sort</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">text</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">ostream_iterator</span><span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">os</span><span class="p">(</span><span class="n">out_file</span><span class="p">);</span>
+</span><span class='line'>  <span class="n">copy</span><span class="p">(</span><span class="n">text</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">text</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">os</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 		
-		<a href="/blog/2012/11/15/octopress-test/" class="more-link">Read on &rarr;</a>
+		
 	</div>
 
 
@@ -644,11 +767,11 @@ source ~/.zshrc</p>
   
 
 
-<time datetime="2012-11-15T15:02:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time></div>
+<time datetime="2012-11-25T09:40:00+08:00" pubdate data-updated="true">Nov 25<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/octopress/'>octopress</a>
+	<a class='category' href='/blog/categories/c-/'>c++</a>, <a class='category' href='/blog/categories/stl/'>stl</a>
 
 
 </div>
@@ -657,28 +780,19 @@ source ~/.zshrc</p>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/15/learning-octopress/">Learning Octopress</a></h1>
+	<h1 class="title"><a href="/blog/2012/11/24/interview-notes/">Interview Notes</a></h1>
 	<div class="entry-content">
-		<h1>Learning Octopress</h1>
-
-<h2>Sharing Code Snippets</h2>
-
-<p>octopress的分享代码的功能非常强大。它提供了多种分享代码的功能。
-如下：</p>
-
-<ul>
-<li> A Sass port of Solarized syntax highlighting created specifically for Octopress.</li>
-<li> Gist code embedding - by Brandon Tilly.</li>
-<li> Insert code snippets from your filesystem with a download link.</li>
-<li> Easy inline code blocks with &lt;figure&gt; and &lt;figcaption&gt; and optional download links.</li>
-<li> Pygments caching - a Jekyll community plugin.</li>
-<li> Table based line numbers added with javascript.</li>
-</ul>
-
+		<ol>
+<li>core dump的知识</li>
+<li>编译内核</li>
+<li>抓包知识</li>
+<li>网络监控指标，监控命令</li>
+<li>数据库表的复制</li>
+</ol>
 
 
 		
-		<a href="/blog/2012/11/15/learning-octopress/" class="more-link">Read on &rarr;</a>
+		
 	</div>
 
 
@@ -695,11 +809,11 @@ source ~/.zshrc</p>
   
 
 
-<time datetime="2012-11-15T14:11:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time></div>
+<time datetime="2012-11-24T07:38:00+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/octopress/'>octopress</a>
+	<a class='category' href='/blog/categories/notes/'>notes</a>
 
 
 </div>
@@ -708,15 +822,61 @@ source ~/.zshrc</p>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/15/learning-github/">Learning Github</a></h1>
+	<h1 class="title"><a href="/blog/2012/11/24/macxia-zi-dong-yun-xing-goagentde-proxy-dot-py/">[转pcbeta]mac下自动运行goagent的proxy.py</a></h1>
 	<div class="entry-content">
-		<h1>Github 学习</h1>
+		<p>在mac.pcbeta.com的论坛中发现了可以在mac下自动运行goagent的proxy.py脚本的方法：
+1、终端下运行下面的命令：</p>
 
-<h4>Github Gist：有版本控制的粘帖代码服务</h4>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo vi /Library/LaunchDaemons/com.go.agent.plist
+</span></code></pre></td></tr></table></div></figure>
 
-<p>Gist是一个粘帖工具，与Pastie类似。通过粘帖工具可以方便地共享文本或者代码——用户把一段文本粘帖到网站上就会得到一个URL，通过这个URL就可以访问先前粘帖的文本。</p>
 
-<p>Gist与Pastie的原理是一样的，只不过它还有一样绝招：粘帖的文本会被放进一个git仓库，仓库可以通过一个git 克隆URL访问，还可以用git客户端程序检出。不仅如此，联系还是双向的：将提交送回到仓库，新作的修改（以及新增的文件）就可以在Gist的Web界 面上访问到，在Web界面上同样可以编辑文本文件。使用Gist，用户可以从粘帖一小段文本或者代码开始，然后通过Web界面或者git工具展开网上的协 作。</p>
+<p>2、粘贴如下代码，并保存</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="cp">&lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot;</span>
+</span><span class='line'><span class="cp">        &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;</span>
+</span><span class='line'><span class="nt">&lt;plist</span> <span class="na">version=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'><span class="nt">&lt;dict&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;key&gt;</span>Label<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;string&gt;</span>com.go.agent<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;key&gt;</span>ProgramArguments<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;array&gt;</span>
+</span><span class='line'><span class="nt">&lt;string&gt;</span>python<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'><span class="nt">&lt;string&gt;</span>/Volumes/LENOVO/soft/Proxy/goagent-goagent-91cd5e4/local/proxy.py<span class="nt">&lt;/string&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;/array&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;key&gt;</span>RunAtLoad<span class="nt">&lt;/key&gt;</span>
+</span><span class='line'>        <span class="nt">&lt;true/&gt;</span>
+</span><span class='line'><span class="nt">&lt;/dict&gt;</span>
+</span><span class='line'><span class="nt">&lt;/plist&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3、然后在终端执行如下命令，重启即可：</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>sudo chown root:wheel /Library/LaunchDaemons/com.go.agent.plist
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 
 		
 		
@@ -736,11 +896,11 @@ source ~/.zshrc</p>
   
 
 
-<time datetime="2012-11-15T14:08:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time></div>
+<time datetime="2012-11-24T07:11:00+08:00" pubdate data-updated="true">Nov 24<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/git/'>git</a>, <a class='category' href='/blog/categories/github/'>github</a>
+	<a class='category' href='/blog/categories/mac/'>mac</a>
 
 
 </div>
@@ -749,23 +909,19 @@ source ~/.zshrc</p>
 
 
     <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/15/octopress-resources/">Octopress Resources</a></h1>
+	<h1 class="title"><a href="/blog/2012/11/22/xcodewu-zheng-shu-zhen-ji-diao-shi-ios/">Xcode无证书真机调试ios</a></h1>
 	<div class="entry-content">
-		<h1>octopress资料汇总</h1>
+		<h1>xcode无证书真机调试ios</h1>
 
-<h2>blog:</h2>
+<p>记录一些资料：
+os开发的，问题还很多。因为真机调试需要开发者账号，这个要一年99美元，约>    和600多块人民币。而且还需要真机越狱，破解xcode。</p>
 
-<h5>Generating a Table of Contents in Octopress : <a href="http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/">http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/</a></h5>
+<p>下面是一些相关链接：
+http://blog.csdn.net/vrix/article/details/7851377
+图文并茂 在ML OS X 10.8 + XCode4.4/4.4.1下实现无证书真机调试IOS5.1.1(亲测，附调试截图)</p>
 
-<h5>octopress customizatoin : <a href="http://www.linuxabc.net.cn/blog/octopress-customization/">http://www.linuxabc.net.cn/blog/octopress-customization/</a></h5>
-
-<h5>Changing Octopress&#8217;s Header : <a href="http://blog.bigdinosaur.org/changing-octopresss-header/">http://blog.bigdinosaur.org/changing-octopresss-header/</a></h5>
-
-<h5>Octopress博客从零开始 : <a href="http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/">http://colors4.us/blog/2012/01/08/octopressbo-ke-cong-ling-kai-shi-i/</a></h5>
-
-<h5>octopress 主题:</h5>
-
-<h6>slash : <a href="http://zespia.tw/blog/2012/01/25/slash-theme/">http://zespia.tw/blog/2012/01/25/slash-theme/</a></h6>
+<p>http://kqwd.blog.163.com/blog/static/4122344820117191351263/
+Xcode 4.1/4.2/4.3/4.4/4.5 + iOS 5.1.1免证书(iDP)开发+真机调试+生成IPA全攻略</p>
 
 		
 		
@@ -785,56 +941,11 @@ source ~/.zshrc</p>
   
 
 
-<time datetime="2012-11-15T09:30:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time></div>
+<time datetime="2012-11-22T16:08:00+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2012</time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/octopress/'>octopress</a>
-
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/blog/2012/11/15/synceden/">Synceden</a></h1>
-	<div class="entry-content">
-		<p>记录一下最近找到的认为比较好的云同步软件，个人比较偏向于多平台的，因为自己装了几个系统。</p>
-
-<p><strong>dropbox</strong>:</p>
-
-<p><strong>坚果云</strong>:</p>
-
-<p><strong>云诺</strong>:</p>
-
-<p><strong>min.us</strong>:</p>
-
-<p>  从iplaysoft.com得知该网站，确实不错，可以支持图片、音乐的外链（我主要考虑了这个）以及一般文件的外链，重要的是还不限流量。使用上来说，和一些一般的网盘比起来，简单许多，但似乎不大方便管理，只有tag的功能，暂时没发现创建多个文件夹管理的功能？？</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-11-15T09:08:00+08:00" pubdate data-updated="true">Nov 15<span>th</span>, 2012</time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/云同步/'>云同步</a>
+	<a class='category' href='/blog/categories/ios/'>ios</a>
 
 
 </div>

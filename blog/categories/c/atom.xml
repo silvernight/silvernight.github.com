@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: c | Jamel Octopress Blog]]></title>
+  <link href="http://silvernight.github.com/blog/categories/c/atom.xml" rel="self"/>
+  <link href="http://silvernight.github.com/"/>
+  <updated>2012-12-20T15:03:20+08:00</updated>
+  <id>http://silvernight.github.com/</id>
+  <author>
+    <name><![CDATA[Jamel@Silvernight]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Unresolved Problems In C++]]></title>
+    <link href="http://silvernight.github.com/blog/2012/11/20/unresolved-problems-in-c-plus-plus/"/>
+    <updated>2012-11-20T15:26:00+08:00</updated>
+    <id>http://silvernight.github.com/blog/2012/11/20/unresolved-problems-in-c-plus-plus</id>
+    <content type="html"><![CDATA[<h1>C++中还不清楚的问题清单：</h1>
+
+<p>最近一直在看C++的书，这里想吧我所能想到的、曾经遇到的还未能解决的C++的问题和概念列出来。</p>
+
+<p>1、public、protected、private的三种继承的区别。。
+2、结构体的计算方式
+3、STL的容器类和算法类
+4、多重继承。
+5、虚函数。
+6、static_cast、dynamic_cast、const_cast、reinterpret_cast的区别
+7、显式类型转换、隐式类型转换、构造函数、成员函数、非成员函数类型转换
+8、作用域、名字查找规则（类内、类的成员函数内、类外、单一文件内、多个文件中）</p>
+]]></content>
+  </entry>
+  
+</feed>
